@@ -1,0 +1,12 @@
+{
+  "name": "quezt",
+  "version": "1.0.0",
+  "description": "licenta",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
