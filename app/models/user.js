@@ -3,12 +3,31 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
-//var commonHelper = require('../helpers/common');
 
 var UserSchema = new Schema({
-  name : {
+  username: {
     type: String,
+    unique: true
+  },
+  email: {
+    type: String,
+    unique: true,
     required: true
+  },
+  name : {
+    type: String
+  },
+  role: {
+    type: String,
+    default: 'user'
+  },
+  password: {
+    type: String,
+    select: false
+  },
+  passwordSalt: {
+    type: String,
+    select: false
   },
   createdAt: {
     type: Date,

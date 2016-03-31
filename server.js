@@ -6,8 +6,8 @@ var ENV = process.env.NODE_ENV || 'development';
 var http = require('http');
 var express = require('express');
 var config = require('./config'); //the index.js file is imported
-//var mongoose = require('./config/mongoose');
-//var models = require('./config/models');
+var mongoose = require('./config/mongoose');
+var models = require('./config/models');
 
 //creating a new instance of express
 var app = express();
@@ -19,13 +19,11 @@ app.set('root', __dirname); //-used to construct path string to files
 app.set('env', ENV);
 
 //creates a connection to the db
-//mongoose.init(app);
-//models.init(app);
-//mongoose.load(app);
-require('./config/mongoose').init(app);
-require('./config/models').init(app);
-require('./config/mongoose').create(app);
-require('./config/mongoose').load(app);
+mongoose.init(app);
+models.init(app);
+//mongoose.create(app);
+mongoose.load(app);
+
 
 
 var server = http.createServer(app);

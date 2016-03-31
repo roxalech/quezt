@@ -24,7 +24,14 @@ function init(app) {
 };
 
 function createUser(app) {
-  mongoose.model('User').create({name: 'roxi'}, function(err, user) {
+  var data = {
+    username: 'test',
+    email: 'test',
+    name: 'test',
+    role: 'admin'
+  };
+
+  mongoose.model('User').create(data, function(err, user) {
     if(err) {
       console.log(err);
     }
