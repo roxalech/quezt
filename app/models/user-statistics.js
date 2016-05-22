@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
-var ResultsSchema = new Schema({
+var StatisticsSchema = new Schema({
   user: {
     type: ObjectId,
     ref: 'User',
@@ -55,4 +55,4 @@ var ResultsSchema = new Schema({
   ]
 });
 
-module.exports = mongoose.model('Results', ResultsSchema);
+module.exports = mongoose.model('Statistics', StatisticsSchema);

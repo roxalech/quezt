@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var config = require('./index');
+const mongoose = require('mongoose');
+const config = require('./index');
 
 module.exports.init = init;
 module.exports.load = initialData;

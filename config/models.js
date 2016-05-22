@@ -3,7 +3,7 @@
 module.exports.init = function(app) {
   var modelsPath = app.get('root') + '/app/models/';
 
-  ['user', 'results'].forEach(function(model) {
+  ['user', 'user-statistics'].forEach(function(model) {
     require(modelsPath + model);
   });
 };
