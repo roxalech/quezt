@@ -1,6 +1,7 @@
 *.idea
 bower_components/
 node_modules/
+public/node_modules
 
 config/environments/*
 !config/environments/example.js
