@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study buddy</title>
+    {% include "common/includes/stylesheets.html" %}
+</head>
+<body>
+    <main class="row">
+        {% block content %}{% endblock %}
+    </main>
+    {% block scripts %}
+    <script type="text/javascript">
+        (function() {
+            'use strict';
+
+            window['CONFIG'] = {
+                baseUrl: '{{ baseUrl }}',
+                assets: {
+                    url: '{{ assetUrl }}'
+                }
+            };
+        }());
+    </script>
+    {% include "common/includes/scripts.html" %}
+    {% endblock %}
+</body>
+</html>

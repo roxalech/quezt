@@ -8,6 +8,9 @@ const express = require('express');
 const config = require('./config'); //the index.js file is imported
 const mongoose = require('./config/mongoose');
 const models = require('./config/models');
+const expressFile = require('./config/express');
+const routes = require('./config/routes');
+
 
 //creating a new instance of express
 const app = express();
@@ -22,6 +25,8 @@ app.set('env', ENV);
 mongoose.init(app);
 models.init(app);
 //mongoose.create(app);
+expressFile.init(app);
+routes.init(app);
 mongoose.load(app);
 
 

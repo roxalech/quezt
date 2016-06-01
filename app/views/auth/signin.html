@@ -1,0 +1,44 @@
+{% extends "../layout.html" %}
+
+{% block content %}
+<div class="container-fluid landing-header">
+    <!-- header part links -->
+    <ul class="header-links">
+        <li><a href="#">About us <i class="fa fa-eye" aria-hidden="true"></i></a></li>
+        <li><a href="#">Contact us <i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+        <li><a href="#">Sign up <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+    </ul>
+    <!-- sign up form -->
+    <div class="clearfix"></div>
+    <p>
+        Allready a member? Let's get started !
+    </p>
+    <div class="clearfix"></div>
+    <form role="form">
+        <div class="form-group">
+            <input type="user-name" class="form-control" id="user-name" placeholder="Username *">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="pwd" placeholder="Password *">
+        </div>
+        <button type="submit" class="btn btn-default login">Login</button>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="button" class="btn btn-primary facebook-login"><i class="fa fa-facebook" aria-hidden="true"></i>Sign in with Facebook!</button>
+    </form>
+</div>
+<div class="container-fluid inner-landing">
+    <div class="inner-landing-left col-md-9">
+        <!-- title -->
+        <h1>
+            <i class="fa fa-book" aria-hidden="true"></i>
+            StudyBuddy
+        </h1>
+        <!-- short-description -->
+        <p>
+            Suspendisse convallis lacus sed ante scelerisque, ut auctor felis dapibus. Phasellus bibendum facilisis lobortis. Praesent placerat ipsum nunc, a malesuada nulla convallis a.          Suspendisse convallis lacus sed ante scelerisque, ut auctor felis dapibus. Phasellus bibendum facilisis lobortis. Praesent placerat ipsum nunc, a malesuada nulla convallis a.
+        </p>
+    </div>
+</div>
+{% endblock %}
