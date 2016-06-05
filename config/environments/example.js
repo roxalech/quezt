@@ -17,5 +17,6 @@ module.exports = {
   nunjucks: {
     cache: false,
     watch: true
-  }
+  },
+  serveStatic: true
 };

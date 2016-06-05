@@ -28,7 +28,7 @@ module.exports.init = function (app) {
   if (config.nunjucks.watch) {
     opts.watch = true;
   }
-
+console.log(opts);
   var loader = new nunjucks.FileSystemLoader(path.join(root, 'app/views'), opts);
   var nunjucksEnv  = new nunjucks.Environment(loader);
   nunjucksEnv.express(app);
@@ -55,4 +55,8 @@ module.exports.init = function (app) {
 
     next();
   });
+
+  if (config.serveStatic) {
+    app.use(serveStatic(path.join(root, 'public')));
+  }
 };
