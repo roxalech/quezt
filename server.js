@@ -10,7 +10,7 @@ const mongoose = require('./config/mongoose');
 const models = require('./config/models');
 const expressFile = require('./config/express');
 const routes = require('./config/routes');
-
+const passport = require('./config/passport');
 
 //creating a new instance of express
 const app = express();
@@ -24,6 +24,7 @@ app.set('env', ENV);
 //creates a connection to the db
 mongoose.init(app);
 models.init(app);
+passport.init(app);
 //mongoose.create(app);
 expressFile.init(app);
 routes.init(app);

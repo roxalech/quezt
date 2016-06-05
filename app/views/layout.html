@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Study buddy</title>
-    {% include "common/includes/stylesheets.html" %}
+    {% block head %}
+    {% include "includes/stylesheets.html" %}
+    {% endblock %}
 </head>
 <body>
     <main class="row">
@@ -15,14 +17,11 @@
             'use strict';
 
             window['CONFIG'] = {
-                baseUrl: '{{ baseUrl }}',
-                assets: {
-                    url: '{{ assetUrl }}'
-                }
+                baseUrl: '{{ baseUrl }}'
             };
         }());
     </script>
-    {% include "common/includes/scripts.html" %}
+    {% include "includes/scripts.html" %}
     {% endblock %}
 </body>
 </html>

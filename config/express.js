@@ -7,6 +7,8 @@ const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
 const nunjucks = require('nunjucks');
 const config = require('./index');
+const path = require('path');
+const serveStatic = require('serve-static');
 
 module.exports.init = function (app) {
   var root = app.get('root');
@@ -14,17 +16,25 @@ module.exports.init = function (app) {
   var sessionOpts = {
     secret: config.session.secret,
     resave: config.session.resave,
+    key: 'skey.sid',
     saveUninitialized: config.session.saveUninitialized
   };
 
-  app.set('views', root + '/app/views');
-  app.set('view engine', 'html');
+  var opts = {};
+  if (!config.nunjucks.cache) {
+    opts.noCache = true;
+  }
 
-  var env = new nunjucks.Environment(new nunjucks.FileSystemLoader('views'));
-  nunjucks.configure('views', {
-    autoescape: true,
-    express   : app
-  });
+  if (config.nunjucks.watch) {
+    opts.watch = true;
+  }
+
+  var loader = new nunjucks.FileSystemLoader(path.join(root, 'app/views'), opts);
+  var nunjucksEnv  = new nunjucks.Environment(loader);
+  nunjucksEnv.express(app);
+
+  app.set('view engine', 'html');
+  app.engine('html', nunjucks.render);
 
   app.use(expressValidator());
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,4 +49,10 @@ module.exports.init = function (app) {
   app.use(session(sessionOpts));
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(function(req, res, next) {
+    res.locals.baseUrl = config.baseUrl;
+
+    next();
+  });
 };

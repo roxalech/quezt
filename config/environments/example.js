@@ -6,6 +6,16 @@ module.exports = {
     uri: "mongodb://localhost/quezt_db"
   },
   app: {
-    name: "quezt"
+    name: "study-buddy"
+  },
+  session: {
+    type: 'mongo',                          // store type, default `memory`
+    secret: 'sTudDyBuDdyS30r3tH3r3',
+    resave: false,                          // save automatically to session store
+    saveUninitialized: true                 // saved new sessions
+  },
+  nunjucks: {
+    cache: false,
+    watch: true
   }
 };
