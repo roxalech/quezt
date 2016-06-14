@@ -8,8 +8,9 @@ const User = mongoose.model('User');
 module.exports = buildLocalStrategy;
 
 function buildLocalStrategy() {
+
   var local = new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
     passwordField: 'password'
   }, function(email, password, done) {
     User.authenticate(email, password, function(err, user) {
