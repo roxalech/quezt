@@ -40,7 +40,7 @@ function registerUser (req, res) {
     return res.redirect('/register');
   }
 
-  var userData = _.pick(req.body, 'name', 'email', 'password');
+  var userData = _.pick(req.body, 'username', 'email', 'password');
 
   User.register(userData, function(err, user) {
     if (err && (11000 === err.code || 11001 === err.code)) {
