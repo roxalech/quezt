@@ -1,13 +1,15 @@
 'use strict';
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const _ = require('lodash');
 
 module.exports.signinPage = signinPage;
 module.exports.registerPage = registerPage;
-
 module.exports.register = registerUser;
 
 function registerUser (req, res, next) {
   req.session.historyData = req.body;
-
+console.log(req.body)
   if (req.body.password !== req.body.password_confirm) {
     req.session.historyData.errorMessage = 'Password confirmation should match'; // 'Parola si confirma parola nu sunt la fel.'
     return res.redirect('/register');
@@ -32,6 +34,7 @@ function registerUser (req, res, next) {
     });
   });
 };
+
 function signinPage(req, res) {
 
   res.render('auth/signin');

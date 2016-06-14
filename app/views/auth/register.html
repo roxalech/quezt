@@ -4,9 +4,10 @@
   id="register-form"
   role="form">
   <div class="form-group">
+    {{baseUrl}}
     <input
       name="email"
-      type="email"
+      type="text"
       class="form-control"
       placeholder="Email *">
   </div>
@@ -28,7 +29,7 @@
     <input
       type="password"
       class="form-control"
-      id="pwdConfirm"
+      name="password_confirm"
       placeholder="Confirm Password *">
   </div>
   <button

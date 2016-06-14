@@ -45,7 +45,7 @@ function initialData(app) {
       if (err) {
         console.log(err);
       }
-      console.log(users);
+      //console.log(users);
       app.set('users', users);
     });
   }
