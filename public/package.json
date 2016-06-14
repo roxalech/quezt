@@ -8,5 +8,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jquery": "^3.0.0"
   }
 }
