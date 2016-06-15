@@ -39,6 +39,27 @@ function createUser(app) {
   });
 }
 
+function createQuestion(app) {
+  var data = {
+    content: 'this is a test',
+
+  };
+
+
+ // mongoose.model('Question').create(data, function(err, question) {
+  data.save(function (err, question) {
+    if(err) {
+      console.log(err);
+    }
+    data.on('es-indexed', function(err, res){
+      if (err) throw err;
+      /* Document is indexed */
+    });
+   //console.log(question);
+  });
+}
+
+
 function initialData(app) {
     // load initial groups
     mongoose.model('User').find(function(err, users) {

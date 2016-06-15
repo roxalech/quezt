@@ -6,7 +6,9 @@ $(function() {
 
 
   var routes = {
-    
+    'add.question' : new APP.AddQuestion({
+      el: '.add-question'
+    })
   };
 
   bootstrap();

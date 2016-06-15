@@ -18,5 +18,8 @@ module.exports = {
     cache: false,
     watch: true
   },
-  serveStatic: true
+  serveStatic: true,
+  elasticsearch: {
+    url: 'localhost:9200'
+  }
 };

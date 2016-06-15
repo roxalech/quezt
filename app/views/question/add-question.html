@@ -1,0 +1,64 @@
+{% extends "../layout.html" %}
+
+{% block content %}
+<div class="container-fluid">
+  <!-- header part links -->
+  <ul class="header-links">
+    <li>
+      <a href="#">
+        About us <i class="fa fa-eye" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li><a href="#">Contact us <i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+    <li><a href="#">Sign up <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
+  </ul>
+  <div
+    data-module="add.question"
+    class="add-question">
+    <form
+        id="question-form"
+        role="form">
+      <div class="form-group">
+        <input
+            name="body"
+            type="text"
+            class="form-control"
+            placeholder="Question body *">
+      </div>
+      <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            name="answer"
+            placeholder="Answer *">
+      </div>
+      <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            name="topic"
+            placeholder="Choose topic *">
+      </div>
+      <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            name="correctAnswer"
+            placeholder="Correct answer *">
+      </div>
+      <div class="form-group">
+        <input
+            type="text"
+            class="form-control"
+            name="difficultyLvl"
+            placeholder="Difficulty level *">
+      </div>
+      <button
+          type="submit"
+          class="btn btn-default login">
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

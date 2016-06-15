@@ -5,4 +5,5 @@ module.exports.init = function(app) {
 
   app.use('/', require(routesPath + '/authentication'));
   app.use('/', require(routesPath + '/dashboard'));
+  app.use('/', require(routesPath + '/question'));
 };
