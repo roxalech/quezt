@@ -1,0 +1,290 @@
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,
+pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,
+strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,
+figcaption,figure,footer,header,menu,nav,section,summary,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+html,
+body {
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  font-family: 'Architects Daughter', cursive;
+}
+// styles for header links
+.header-links {
+  float: right;
+  padding:15px 100px 15px 0;
+  li {
+    list-style: none;
+    display: inline-block;
+    padding:0 5px 0 0;
+    border-right: 1px solid grey;
+    &:last-of-type {
+      border: 0;
+    }
+    a {
+      text-decoration: none; 
+      color: black;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 16px;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      -webkit-transition : all 0.3s ease-in;
+       -moz-transition : all 0.3s ease-in;
+       -o-transition : all 0.3s ease-in;
+       transition : all 0.3s ease-in;
+      &:hover {
+        color: #337ab7;
+        border-top: 2px solid #337ab7;
+        border-bottom: 2px solid #337ab7;
+      }
+    }
+  }
+}
+// styles for landing block
+.landing-header{
+  background: url("../img/StudyBuddy.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  height: auto;
+  p {
+    text-align: center;
+    font-size: 16px;
+    width: 12%;
+    float: right;
+    margin: 20px 143px 15px 0;
+
+  }
+  form {
+    width: 15%;
+    float: right;
+    margin-right: 125px;
+    .login, .checkbox {
+      float: left;
+    }
+    .checkbox {
+      margin-left: 10px;
+    }
+    .facebook-login {
+      width: 100%;
+      i {
+        font-size: 18px;
+        float: left;
+        padding-top: 2px;
+      }
+    }
+  }
+}
+.inner-landing {
+  h1 {
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    padding: 15px 0;
+    text-align: center;
+  }
+}
+// styles for dashboard block
+.dashboard-header {
+  .header-links {
+    li {
+      .navbar-form {
+        margin: 0;
+        padding: 0 5px 0 0;
+        input {
+          padding: 0 8px;
+          height: 22px;
+        }
+        .input-group-btn button {
+          height: 22px;
+          .glyphicon {
+            bottom: 2px;
+            top: unset;
+          }
+        }
+      }
+      &:first-of-type {
+        border: 0;
+        padding: 0;
+      }
+    }
+  }
+}
+// main section
+.dashboard-inner {
+  margin-top: 50px;
+  .titles {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: default;
+  }
+  .round-action {
+    border-radius: 50%;
+    width: 60%;
+    margin: 0 auto;
+    height: 253px;
+    cursor: pointer;
+  }
+  .add-questions {
+    background-color: #9963d0;
+    -webkit-transition : opacity 0.4s ease-in;
+     -moz-transition : opacity 0.4s ease-in;
+     -o-transition : opacity 0.4s ease-in;
+     transition : opacity 0.4s ease-in;
+    &:hover {
+      opacity: 0.8;
+      i {
+        opacity: 0.3;
+      }
+      p {
+        opacity: 0.9;
+        color: black;
+        font-weight: 700;
+      }
+    }
+    p {
+      text-align: center;
+      position: relative;
+      top: 60px;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 20px;
+      opacity: 0.6;
+    }
+    i {
+      font-size: 100px;
+      text-align: center;
+      position: relative;
+      left: 93px;
+      top: 60px;
+    }
+  }
+  .take-test {
+    background-color: #63d06a;
+    -webkit-transition : opacity 0.4s ease-in;
+     -moz-transition : opacity 0.4s ease-in;
+     -o-transition : opacity 0.4s ease-in;
+     transition : opacity 0.4s ease-in;
+    &:hover {
+      opacity: 0.8;
+      i {
+        opacity: 0.3;
+      }
+      p {
+        opacity: 0.9;
+        color: black;
+        font-weight: 700;
+      }
+    }
+    p {
+      text-align: center;
+      position: relative;
+      top: 60px;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 20px;
+      opacity: 0.6;
+    }
+    i {
+      font-size: 100px;
+      text-align: center;
+      position: relative;
+      left: 93px;
+      top: 93px;
+    }
+  }
+  .high-scores {
+    background-color: #aedf44;
+    -webkit-transition : opacity 0.4s ease-in;
+     -moz-transition : opacity 0.4s ease-in;
+     -o-transition : opacity 0.4s ease-in;
+     transition : opacity 0.4s ease-in;
+    &:hover {
+      opacity: 0.7;
+      i {
+        opacity: 0.3;
+      }
+      p {
+        opacity: 0.9;
+        color: black;
+        font-weight: 700;
+      }
+    }
+    p {
+      text-align: center;
+      position: relative;
+      top: 60px;
+      width: 80%;
+      margin: 0 auto;
+      font-size: 20px;
+      opacity: 0.6;
+    }
+    i {
+      font-size: 100px;
+      text-align: center;
+      position: relative;
+      left: 78px;
+      top: 81px;
+    }
+  }
+}
+// forum button
+.forum {
+  float: right;
+  margin-top: 100px;
+  p {
+    text-align: center;
+    font-size: 16px;
+    cursor: default;
+  }
+  a {
+    padding: 17px 25px;
+    position: relative;
+    top: 25px;
+    left: 82px;
+    background-color: tomato;
+    border-radius: 15px;
+    color: #313e5c;
+    text-decoration: none;
+    font-size: 20px;
+    i {
+      font-size: 40px;
+      position: relative;
+      top: 8px;
+      right: 10px;
+    }
+  }
+}
+// sign up form
+.sign-up-form {
+  margin-top: 80px;
+  border: 1px solid grey;
+  border-radius: 15px;
+  padding: 20px 0;
+  h2 {
+    text-align: center;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  input {
+    width: 60%;
+    margin: 0 auto;
+  }
+  button {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 auto;
+    margin-left: 185px;
+  }
+}
