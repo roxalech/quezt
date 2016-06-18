@@ -8,6 +8,9 @@ $(function() {
   var routes = {
     'add.question' : new APP.AddQuestion({
       el: '.add-question'
+    }),
+    'edit.profile' : new APP.EditProfile({
+      el: '#edit-profile-form'
     })
   };
 

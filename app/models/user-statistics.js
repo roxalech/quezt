@@ -19,8 +19,8 @@ var StatisticsSchema = new Schema({
     type: Number,
     default: 0
   },
-  /** nr of challenges accomplished */
-  completedChallenges: {
+  /** nr of quizzes accomplished */
+  quizzesTaken: {
     type: Number,
     default: 0
   },
@@ -29,30 +29,35 @@ var StatisticsSchema = new Schema({
     type: Number,
     default: 0
   },
-  /** nr of topics added */
-  topics: {
-    type: Number,
-    default: 0
-  },
-  challenges: [
+  badges: [
     {
-      challenge: {
-        type: ObjectId
-        //need ref to the Challenges model
+      badgeType:{
+        type: String
       },
-      result: {
-        type: Number,
-        default: 0
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now
-      },
-      completed: {
+      receivedAt: {
         type: Date
       }
     }
   ]
+  //challenges: [
+  //  {
+  //    challenge: {
+  //      type: ObjectId
+  //      //need ref to the Challenges model
+  //    },
+  //    result: {
+  //      type: Number,
+  //      default: 0
+  //    },
+  //    createdAt: {
+  //      type: Date,
+  //      default: Date.now
+  //    },
+  //    completed: {
+  //      type: Date
+  //    }
+  //  }
+  //]
 });
 
 module.exports = mongoose.model('Statistics', StatisticsSchema);

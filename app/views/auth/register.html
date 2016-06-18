@@ -1,40 +1,111 @@
-<form
-  action='{{ baseUrl }}/register'
-  method='post'
-  id="register-form"
-  role="form">
-  <div class="form-group">
-    {{baseUrl}}
-    <input
-      name="email"
-      type="text"
-      class="form-control"
-      placeholder="Email *">
+{% extends "../layout.html" %}
+
+{% block content %}
+<section class="authentification-section" id="signup">
+  <div class="container">
+    <div class="card form-card form-small form-block whiteframe-z2">
+      <h3 class="logo">Study Buddy</h3>
+      <h4>Create new account</h4>
+      <p>
+        A perfect helper for your exams.</br>
+        Creating an account is free.
+      </p>
+      {% if sess.historyData.errorMessage %}
+      <div class="has-error">
+        <label class="control-label">{{ sess.historyData.errorMessage }}</label>
+      </div>
+      {% endif %}
+      <form
+        action='{{ baseUrl }}/register'
+        method='post'
+        id="register-form">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type='text'
+            name='name'
+            placeholder='Full name'
+            value="{{ sess.historyData.name }}" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type='text'
+            name='email'
+            placeholder="Email"
+            value="{{ sess.historyData.email }}" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type='password'
+            name='password'
+            placeholder="Password" />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type='password'
+            name='password_confirm'
+            placeholder='Confirm Password' />
+        </div>
+        <div class="form-group">
+          <button
+            class="button primary block"
+            type="submit">
+            Create account
+          </button>
+        </div>
+      </form>
+      <div class="already-account">
+        <p>Already have an account?
+          <a href='{{ baseUrl }}/signin'
+             title="Existing account sign in">
+            You can sign in here
+          </a>
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <input
-      type="username"
-      class="form-control"
-      name="username"
-      placeholder="Username *">
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      class="form-control"
-      name="password"
-      placeholder="Password *">
-  </div>
-  <div class="form-group">
-    <input
-      type="password"
-      class="form-control"
-      name="password_confirm"
-      placeholder="Confirm Password *">
-  </div>
-  <button
-    type="submit"
-    class="btn btn-default login">
-    Register
-  </button>
-</form>
+</section>
+{% endblock %}
+
+<!--<form-->
+  <!--action='{{ baseUrl }}/register'-->
+  <!--method='post'-->
+  <!--id="register-form"-->
+  <!--role="form">-->
+  <!--<div class="form-group">-->
+    <!--<input-->
+      <!--name="email"-->
+      <!--type="text"-->
+      <!--class="form-control"-->
+      <!--placeholder="Email *">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+    <!--<input-->
+      <!--type="username"-->
+      <!--class="form-control"-->
+      <!--name="username"-->
+      <!--placeholder="Username *">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+    <!--<input-->
+      <!--type="password"-->
+      <!--class="form-control"-->
+      <!--name="password"-->
+      <!--placeholder="Password *">-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+    <!--<input-->
+      <!--type="password"-->
+      <!--class="form-control"-->
+      <!--name="password_confirm"-->
+      <!--placeholder="Confirm Password *">-->
+  <!--</div>-->
+  <!--<button-->
+    <!--type="submit"-->
+    <!--class="btn btn-default login">-->
+    <!--Register-->
+  <!--</button>-->
+<!--</form>-->

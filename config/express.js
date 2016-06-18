@@ -52,6 +52,7 @@ console.log(opts);
 
   app.use(function(req, res, next) {
     res.locals.baseUrl = config.baseUrl;
+    res.locals.currentUser = req.user;
 
     next();
   });

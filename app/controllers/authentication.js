@@ -1,8 +1,9 @@
 'use strict';
+
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const _ = require('lodash');
 const passport = require('passport');
+const _ = require('lodash');
 
 module.exports.signinPage = signinPage;
 module.exports.signin = signinUser;
@@ -40,20 +41,21 @@ function registerUser (req, res) {
     return res.redirect('/register');
   }
 
-    var userData = _.pick(req.body, 'username', 'email', 'password');
+  var userData = _.pick(req.body, 'name', 'email', 'password');
 
   User.register(userData, function(err, user) {
     if (err && (11000 === err.code || 11001 === err.code)) {
       req.session.historyData.errorMessage = 'E-mail is already in use.'; // 'Există deja un cont cu adresa de e-mail precizată.'
-      return res.redirect('/signup');
+      return res.redirect('/register');
     }
 
     if (err) {
       req.session.historyData.errorMessage = 'Something went wrong, please try later.'; // 'A apărut o eroare, vă rugăm încercați mai târziu'
-      return res.redirect('/signup');
+      return res.redirect('/regiter');
     }
 
     req.logIn(user, function(err) {
+      console.log(user);
       req.session.historyData = undefined;
       res.redirect('/');
     });

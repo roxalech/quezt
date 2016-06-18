@@ -25,7 +25,7 @@
     $addQuestionForm.submit(function(e) {
       e.preventDefault();
 
-      
+
     });
   }
 })(APP, APP, CONFIG, $);

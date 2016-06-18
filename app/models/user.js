@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const passwordHelper = require('../helpers/password');
 const _ = require('lodash');
+const shortId = require('shortid');
 
 var UserSchema = new Schema({
   username: {
@@ -36,11 +37,15 @@ var UserSchema = new Schema({
     default: Date.now
   }
 });
-//
-//UserSchema.pre('save', function(next) {
-//  //this.slug = commonHelper.createSlug(this.name);
-//  next();
-//});
+
+UserSchema.pre('save', function(next) {
+  var self = this;
+  this.username = this.username || shortId.generate();
+  console.log(999, !(this.isNew))
+
+  return next();
+
+});
 
 /**
  * Find a user by it's email and checks the password againts the stored hash

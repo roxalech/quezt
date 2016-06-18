@@ -4,7 +4,7 @@ module.exports.ensured = ensureAuthenticated;
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
-    console.log(req.isAuthenticated());
+    console.log(44);
     return next();
   }
 
