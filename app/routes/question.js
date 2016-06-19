@@ -7,7 +7,6 @@ const auth = require('../middlewares/authentication');
 
 router.get('/add-question',
   auth.ensured,
-  questionCtrl.searchQuestion,
   questionCtrl.addQuestionPage
 );
 
@@ -16,5 +15,9 @@ router.post('/add-question',
   questionCtrl.addQuestion
 );
 
+router.get('/search-question',
+  auth.ensured,
+  questionCtrl.searchQuestion
+);
 
 module.exports = router;

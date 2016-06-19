@@ -51,6 +51,7 @@ console.log(opts);
   app.use(passport.session());
 
   app.use(function(req, res, next) {
+    req.resources = req.resources || {};
     res.locals.baseUrl = config.baseUrl;
     res.locals.currentUser = req.user;
 

@@ -17,41 +17,26 @@ var QuestionSchema = new Schema({
     ref: 'User',
     required: true
   },
-  body : {
-    type: {
-      type:String,
-      es_indexed:true
-    }
-  },
+  body : {type:String, es_indexed:true},
   answers: [
     {
       body: {
         type: String
-      },
-      type: {
-        type: String
-      },
-      question: {
-        type: ObjectId,
-        ref: 'User'
       },
       index: {
         type: String
       }
     }
   ],
+  answerType: {
+    type: String,
+    default: 'single-choice'
+  },
   correct: {
     type: String
   },
-  topic: {
-    type: {
-      type: String,
-      es_indexed: true
-    }
-  },
-  difficultyLvl: {
-    type: String
-  }
+  category: {type:String, es_indexed:true},
+  difficulty : {type:String, es_indexed:true}
 });
 
 QuestionSchema.plugin(mongoosastic, {
@@ -60,7 +45,16 @@ QuestionSchema.plugin(mongoosastic, {
 
 var Question = mongoose.model('Question', QuestionSchema);
 
-//Question.createMapping(function(err, mapping){
+//Question.createMapping({
+//  "analysis" : {
+//    "analyzer":{
+//      "content":{
+//        "type":"custom",
+//        "tokenizer":"whitespace"
+//      }
+//    }
+//  }
+//},function(err, mapping){
 //  if(err){
 //    console.log('error creating mapping (you can safely ignore this)');
 //    console.log(err);

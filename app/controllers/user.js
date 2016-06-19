@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const _ = require('lodash');
 
-
 module.exports.profilePage = profilePage;
 module.exports.accountSettings = changeAccountSettings;
 module.exports.accountPage = accountPage;
@@ -13,9 +12,9 @@ module.exports.accountPage = accountPage;
 function profilePage (req, res) {
   res.render('user/profile', {
     user: req.user._id,
-    badges: req.resources.badges,
-    quizzes: req.resources.quizzes,
-    questions: req.resources.questions
+    //badges: req.resources.badges,
+    //quizzes: req.resources.quizzes,
+    //questions: req.resources.questions
   });
 }
 

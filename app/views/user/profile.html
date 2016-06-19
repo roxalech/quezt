@@ -1,20 +1,31 @@
-<div>
-  User score
+{% extends "../layout.html" %}
 
-  {% for key, badge in badges %}
-  <span>{{badge.type}}</span>
-  <span>{{badge.receivedAt}}</span>
-  {% endfor %}
+{% block content %}
+{%include "../common/partials/header.html" %}
+{%include "../common/partials/navbar.html" %}
+<!-- main section  -->
+<div class="">
+  <div class="container-fluid dashboard-inner">
+    <div>
+      User score
 
-  Quizzes taken
-  <span>{{quizzes.nrQuizzes}}</span>
-  {% if currentUser._id.toString() === user.toString() %}
-  //show summary results for quizzes
-  {%endif%}
-  Questions added
+      {% for key, badge in badges %}
+      <span>{{badge.type}}</span>
+      <span>{{badge.receivedAt}}</span>
+      {% endfor %}
 
-  {% for key, question in questions %}
-  <span>{{question.body}}</span>
-  <span>{{question.score}}</span>
-  {% endfor %}
-</div>
+      Quizzes taken
+      <span>{{quizzes.nrQuizzes}}</span>
+      <!--{% if currentUser._id.toString() == user.toString() %}-->
+      <!--//show summary results for quizzes-->
+      <!--{%endif%}-->
+      Questions added
+
+      {% for key, question in questions %}
+      <span>{{question.body}}</span>
+      <span>{{question.score}}</span>
+      {% endfor %}
+    </div>
+  </div>
+</div>-
+{% endblock %}

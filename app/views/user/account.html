@@ -1,64 +1,62 @@
 {% extends "../layout.html" %}
 
 {% block content %}
-
-<div class="container main-content">
-  <div class="row">
-    <div class="col content">
-      <div class="card form-block whiteframe-z2 shadow-2dp">
-        <h2>Public profile</h2>
-        <p>Edit what will be displayed on your public profile.</p>
-        <form
-            data-module="edit.profile"
-            id="edit-profile-form"
-            enctype="application/x-www-form-urlencoded">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-                class="form-control"
-                id="name"
-                type="text"
-                name="name"
-                placeholder="Your name"
-                value="{{ currentUser.name }}"
-                required>
-            <p class="has-error" id="validation-name">
-              {% if historyData.name == 'name' %}{{ historyData.errorMessage }}{% endif %}
-            </p>
-          </div>
-          <div class="form-group">
-            <label for="username">Username (nickname)</label>
-            <input
-                class="form-control"
-                id="username"
-                type="text"
-                name="username"
-                placeholder="Your username"
-                value="{{ currentUser.username }}"
-                required>
-            <p class="has-error" id="validation-username">
-              {% if historyData.name == 'username' %}{{ historyData.errorMessage }}{% endif %}
-            </p>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-                class="form-control"
-                id="email"
-                type="text"
-                name="email"
-                placeholder="Email address"
-                value="{{ currentUser.email }}">
-            <p class="has-error" id="validation-email">
-              {% if historyData.name == 'email' %}{{ historyData.errorMessage }}{% endif %}
-            </p>
-          </div>
-          <div class="form-group">
-            <button class="button primary btn-submit" type="submit">save</button>
-          </div>
-        </form>
+{%include "../common/partials/header.html" %}
+{%include "../common/partials/navbar.html" %}
+<!-- main section  -->
+<div class="">
+  <div class="container-fluid dashboard-inner">
+    <h2>Public profile</h2>
+    <p>Edit what will be displayed on your public profile.</p>
+    <form
+        data-module="edit.profile"
+        id="edit-profile-form"
+        enctype="application/x-www-form-urlencoded">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+            class="form-control"
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Your name"
+            value="{{ currentUser.name }}"
+            required>
+        <p class="has-error" id="validation-name">
+          {% if historyData.name == 'name' %}{{ historyData.errorMessage }}{% endif %}
+        </p>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="username">Username (nickname)</label>
+        <input
+            class="form-control"
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Your username"
+            value="{{ currentUser.username }}"
+            required>
+        <p class="has-error" id="validation-username">
+          {% if historyData.name == 'username' %}{{ historyData.errorMessage }}{% endif %}
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+            class="form-control"
+            id="email"
+            type="text"
+            name="email"
+            placeholder="Email address"
+            value="{{ currentUser.email }}">
+        <p class="has-error" id="validation-email">
+          {% if historyData.name == 'email' %}{{ historyData.errorMessage }}{% endif %}
+        </p>
+      </div>
+      <div class="form-group">
+        <button class="button primary btn-submit" type="submit">save</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}

@@ -13,28 +13,36 @@ function addQuestionPage (req, res) {
 }
 
 function addQuestion (req, res) {
-  var data = _.pick(req.body, 'body', 'answer', 'topic', 'correctAnswer', 'difficultyLvl');
-console.log(data);
+  var data = _.pick(req.body, 'questionBody', 'answerType', 'answer', 'difficulty', 'category', 'correctAnswer');
 
   var questionData = new Question({
-    body: data.body,
-    answer: data.answer,
-    topic: data.topic,
-    correctAnswer: data.correctAnswer,
-    difficultyLvl: data.difficultyLvl,
-    author: '57606401bdc0583822bc637e'
+    body: data.questionBody,
+    answerType: data.answerType,
+    difficulty: data.difficulty,
+    category: data.category,
+    correct: data.correctAnswer,
+    author:  req.user._id
   });
+
+  var answer = {
+    body: data.answer,
+    index: '0'
+  }
+  questionData.answers.push(answer);
+
+  console.log(11111, questionData)
 
   questionData.save(function (err, result) {
     if(err) {
-      console.log(err);
+      return res.status(401).json({ message: err });
     }
+    console.log('mongosave', result)
     questionData.on('es-indexed', function(err, res){
       if (err) throw err;
       /* Document is indexed */
 
-      console.log(111, result);
-
+      console.log(222, res);
+      //res.json(result);
     });
     res.json(result);
   });
@@ -42,10 +50,14 @@ console.log(data);
 
 function searchQuestion(req, res, next) {
   Question.search(
-    {query_string: {query: "bob"}},
+    {query_string: {query: "g"}},
     { hydrate:true },
     function(err,results) {
+      if (err) {
+        return res.status(401).json({ message: err });
+      }
       console.log(2222, results.hits.hits);
-      next();
+      res.json(results)
+      //next();
     });
   }

@@ -2,12 +2,17 @@
 
 const express = require('express');
 const router = express.Router();
-const quizCtrl = require('../controllers/question');
+const quizCtrl = require('../controllers/quiz');
 const auth = require('../middlewares/authentication');
 
 router.get('/start-quiz',
   auth.ensured,
-  quizCtrl.addQuestionPage
+  quizCtrl.startQuiz
+);
+
+router.post('/start-quiz',
+  auth.ensured,
+  quizCtrl.generateQuiz
 );
 
 

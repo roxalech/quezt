@@ -5,7 +5,8 @@ module.exports.init = function(app) {
 
   [ 'user',
     'user-statistics',
-    'question'].forEach(function(model) {
+    'question',
+    'forum'].forEach(function(model) {
     require(modelsPath + model);
   });
 };

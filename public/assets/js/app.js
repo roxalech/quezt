@@ -11,7 +11,14 @@ $(function() {
     }),
     'edit.profile' : new APP.EditProfile({
       el: '#edit-profile-form'
+    }),
+    'add.topic' : new APP.AddTopic({
+      el: '.add-forum-topic'
+    }),
+    'generate.quiz' : new APP.GenerateTest({
+      el: '#quiz-form'
     })
+
   };
 
   bootstrap();
