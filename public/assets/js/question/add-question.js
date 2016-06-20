@@ -10,6 +10,8 @@
     this.el = opts.el;
     this.$el = $(opts.el);
     this.$addQuestionForm = this.$el.find('#question-form');
+    this.$answer = this.$el.find('.answer');
+    this.$answerContainer = this.$el.find('.answer-container');
   }
 
   AddQuestion.prototype.initialize = initialize;
@@ -22,24 +24,37 @@
   function bindHandlers () {
     var self = this;
     var $addQuestionForm = self.$addQuestionForm;
+    var $answer = self.$answer;
+    var $answerContainer = self.$answerContainer;
 
-    var test = baseUrl + '/search-question';
-    console.log(test)
-    util
-      .get(test)
-      .done(function(result) {
-        console.log(result);
-        //window.location.reload();
-      })
-      .fail(function(error) {
-        console.log(error);
-        //var message = JSON.parse(error.responseText);
-        //util.generateNoty('error', message.message);
-      });
+    //var test = baseUrl + '/search-question';
+    //console.log(test)
+    //util
+    //  .get(test)
+    //  .done(function(result) {
+    //    console.log(result);
+    //    //window.location.reload();
+    //  })
+    //  .fail(function(error) {
+    //    console.log(error);
+    //    //var message = JSON.parse(error.responseText);
+    //    //util.generateNoty('error', message.message);
+    //  });
 
-    $addQuestionForm.submit(function(e) {
+    $answer.on('click', function () {
+      var template = ``;
+
+      template = `<input  type="text"
+        class="answer form-control"
+         name="answer"
+         placeholder="Answer *"> `;
+
+      $(template).appendTo($answerContainer);
+    });
+
+    $addQuestionForm.submit(function (e) {
       e.preventDefault();
-console.log('in');
+
       var url = baseUrl + '/add-question';
       var questionData = {};
       var $bodyInput = $('input[name="questionBody"]');
