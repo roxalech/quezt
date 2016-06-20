@@ -37,6 +37,7 @@
         .done(function(result) {
           console.log(result);
           //window.location.reload();
+          window.location.href = '/quiz'
         })
         .fail(function(error) {
           console.log(error)
