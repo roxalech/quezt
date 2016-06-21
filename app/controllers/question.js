@@ -13,7 +13,8 @@ function addQuestionPage (req, res) {
 }
 
 function addQuestion (req, res) {
-  var data = _.pick(req.body, 'questionBody', 'answerType', 'answer', 'difficulty', 'category', 'correctAnswer');
+  var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category', 'correctAnswer');
+  var answerArr = req.body.answers;
 
   var questionData = new Question({
     body: data.questionBody,
@@ -24,13 +25,17 @@ function addQuestion (req, res) {
     author:  req.user._id
   });
 
-  var answer = {
-    body: data.answer,
-    index: '0'
-  }
-  questionData.answers.push(answer);
 
-  console.log(11111, questionData)
+
+  for (var i = 0; i < answerArr.length; i++) {
+    var answerObj = {
+      body: answerArr[i],
+      index: i
+    }
+    questionData.answers.push(answerObj);
+  }
+
+  //console.log(11111, questionData)
 
   questionData.save(function (err, result) {
     if(err) {
@@ -41,7 +46,7 @@ function addQuestion (req, res) {
       if (err) throw err;
       /* Document is indexed */
 
-      console.log(222, res);
+      //console.log(222, res);
       //res.json(result);
     });
     res.json(result);

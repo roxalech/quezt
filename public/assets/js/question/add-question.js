@@ -10,7 +10,7 @@
     this.el = opts.el;
     this.$el = $(opts.el);
     this.$addQuestionForm = this.$el.find('#question-form');
-    this.$answer = this.$el.find('.answer');
+    this.$addAnswer = this.$el.find('.add-answer');
     this.$answerContainer = this.$el.find('.answer-container');
   }
 
@@ -24,9 +24,9 @@
   function bindHandlers () {
     var self = this;
     var $addQuestionForm = self.$addQuestionForm;
-    var $answer = self.$answer;
+    var $addAnswer = self.$addAnswer;
     var $answerContainer = self.$answerContainer;
-
+    var index = 1;
     //var test = baseUrl + '/search-question';
     //console.log(test)
     //util
@@ -41,14 +41,21 @@
     //    //util.generateNoty('error', message.message);
     //  });
 
-    $answer.on('click', function () {
+    $addAnswer.on('click', function (e) {
+      e.preventDefault();
       var template = ``;
+      var $index = 'answer-' + index;
 
-      template = `<input  type="text"
-        class="answer form-control"
-         name="answer"
-         placeholder="Answer *"> `;
+      template = `<div class="form-group">
+        <input
+          type="text"
+          class="answer form-control"
+          id=${$index}
+          name=${$index}
+          placeholder="Answer *">
+        </div> `;
 
+      index++;
       $(template).appendTo($answerContainer);
     });
 
@@ -58,14 +65,22 @@
       var url = baseUrl + '/add-question';
       var questionData = {};
       var $bodyInput = $('input[name="questionBody"]');
-      var $answerInput = $('input[name="answer"]');
       var $difficultyInput = $('input[name="difficultyLvl"]');
       var $categoryInput = $('input[name="category"]');
       var $correctInput = $('input[name="correctAnswer"]');
       var $answerTypeInput = $('input[name="answerType"]');
+      var $answers = $('.answer');
+      console.log($answers.length);
+      var answers = [];
+
+      for (var i = 0; i < $answers.length; i++) {
+        var inputName = '#answer-' + i;
+        var answer = $(inputName).val();
+        answers.push(answer);
+      }
 
       questionData['questionBody'] = $bodyInput.val();
-      questionData['answer'] = $answerInput.val();
+      questionData['answers'] = answers;
       questionData['difficulty'] = $difficultyInput.val();
       questionData['category'] = $categoryInput.val();
       questionData['correctAnswer'] = $correctInput.val();
