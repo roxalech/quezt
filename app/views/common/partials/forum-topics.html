@@ -1,5 +1,21 @@
-{% block topics %}
-<section>
-
-</section>
-{% endblock %}
+{%  for topic in topics %}
+  <article>
+    <div>{{ topic.category }}</div>
+    <div><a href="{{ baseUrl }}/topics/{{ topic.hash }}">{{ topic.topic }}</a></div>
+    <div>
+      <a
+        href="{{ baseUrl }}/topics/{{ topic.hash }}#comment"
+        class="action comments"
+        target="_blank">
+        {% if post.comments == 0 %}
+          <i class="fa fa-commenting-o"></i>
+          <span class="social-text">comment</span>
+        {% else %}
+          <i class="fa fa-commenting"></i>
+          <span>{{ post.comments }}</span>
+          <span class="social-text">comment</span>
+        {% endif %}
+      </a>
+    </div>
+  </article>
+{% endfor %}

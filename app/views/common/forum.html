@@ -4,7 +4,7 @@
 {%include "./partials/header.html" %}
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
-<div class="row">
+<div class="">
   <div class="container-fluid dashboard-inner">
     <div class="col-md-4">
       <h3 class="titles">Forum</h3>
@@ -32,13 +32,13 @@
         <button
           type="submit"
           class="btn btn-default">
-          Login
+          Submit
         </button>
       </form>
     </div>
-    <div>
-      {% block topics %}{% endblock %}
-    </div>
+    <section>
+      {% include "./partials/forum-topics.html" %}
+    </section>
   </div>
 </div>
 {% endblock %}

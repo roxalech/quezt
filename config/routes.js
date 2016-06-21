@@ -8,4 +8,5 @@ module.exports.init = function(app) {
   app.use('/', require(routesPath + '/question'));
   app.use('/', require(routesPath + '/quiz'));
   app.use('/', require(routesPath + '/user'));
+  app.use('/', require(routesPath + '/comment'));
 };

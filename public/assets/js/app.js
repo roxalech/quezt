@@ -17,8 +17,10 @@ $(function() {
     }),
     'generate.quiz' : new APP.GenerateTest({
       el: '#quiz-form'
+    }),
+    'add.comment' : new APP.AddComment({
+      el: '.comment-section'
     })
-
   };
 
   bootstrap();

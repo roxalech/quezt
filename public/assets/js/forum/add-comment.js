@@ -4,16 +4,16 @@
   var baseUrl = config.baseUrl;
   var util = imports.Util;
 
-  exports['AddTopic'] = AddTopic;
+  exports['AddComment'] = AddComment;
 
-  function AddTopic(opts){
+  function AddComment(opts){
     this.el = opts.el;
     this.$el = $(opts.el);
-    this.$addTopicForm = this.$el.find('#topic-form');
+    this.$addTopicForm = this.$el.find('#comment-form');
   }
 
-  AddTopic.prototype.initialize = initialize;
-  AddTopic.prototype.bindHandlers = bindHandlers;
+  AddComment.prototype.initialize = initialize;
+  AddComment.prototype.bindHandlers = bindHandlers;
 
   function initialize () {
     this.bindHandlers();
@@ -25,16 +25,17 @@
 
     $addTopicForm.submit(function(e) {
       e.preventDefault();
-      var url = baseUrl + '/add-topic';
-      var topicData = {};
-      var $topicInput = $('input[name="add-forum-topic"]');
-      var $categoryInput = $('input[name="category"]');
 
-      topicData['topic'] = $topicInput.val();
-      topicData['category'] = $categoryInput.val();
+      var hash = $(this).attr('data-hash');
+      console.log(hash);
+      var url = baseUrl + '/topic/' + hash +'/comment';
+      var commentData = {};
+      var $topicInput = $('input[name="add-comment"]');
+
+      commentData['body'] = $topicInput.val();
 
       util
-        .post(url, topicData)
+        .post(url, commentData)
         .done(function(result) {
           //console.log(result);
           window.location.reload();
