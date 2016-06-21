@@ -9,7 +9,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "less": "node_modules/.bin/autoless public/assets/less public/assets/css --no-watch",
+    "less-watch": "node_modules/.bin/autoless public/assets/less public/assets/css"
   },
   "author": "",
   "license": "ISC",

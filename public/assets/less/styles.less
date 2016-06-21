@@ -141,23 +141,25 @@ body {
   float: right;
   margin-right: 62px;
 }
-.landing-header form a {
-  text-decoration: none;
-  color: #334452;
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 16px;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in;
-  -o-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
-}
-.landing-header form a:hover {
-  color: #337ab7;
-  border-top: 2px solid #337ab7;
-  border-bottom: 2px solid #337ab7;
+.landing-header form {
+  a {
+    text-decoration: none;
+    color: #334452;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+    &:hover {
+      color: #337ab7;
+      border-top: 2px solid #337ab7;
+      border-bottom: 2px solid #337ab7;
+    }
+  }
 }
 .inner-landing h1 {
   text-align: center;
@@ -202,10 +204,10 @@ body {
   margin: 0 auto;
   height: 253px;
   cursor: pointer;
-}
-.dashboard-inner .round-action a {
-  text-decoration: none;
-  color: #334452;
+  a {
+    text-decoration: none;
+    color: #334452;
+  }
 }
 .dashboard-inner .add-questions {
   background-color: #c76256;
@@ -357,35 +359,43 @@ body {
   margin: 0 auto;
   margin-left: 185px;
 }
-.authentification-section .container-fluid .card {
-  text-align: center;
-  padding-top: 50px;
-  width: 35%;
-  margin: 0 auto;
-}
-.authentification-section .container-fluid .card .logo i {
-  padding: 5px 10px 0 0;
-}
-.authentification-section .container-fluid .card p {
-  font-size: 15px;
-  margin-bottom: 25px;
-}
-.authentification-section .container-fluid .card p a {
-  text-decoration: none;
-}
-.authentification-section .container-fluid .card h3 {
-  margin-bottom: 25px;
-}
-.authentification-section .container-fluid .card form input,
-.authentification-section .container-fluid .card form button {
-  font-family: 'Roboto', sans-serif;
-}
-.authentification-section .container-fluid .card form label {
-  padding-left: 13px !important;
-}
-.authentification-section .container-fluid .card form .form-group {
-  text-align: left;
-}
-.authentification-section .container-fluid .card form .bottom-button {
-  text-align: center;
+.authentification-section {
+  .container-fluid {
+    .card {
+      text-align: center;
+      padding-top: 50px;
+      width: 35%;
+      margin: 0 auto;
+      .logo {
+        i {
+          padding: 5px 10px 0 0;
+        }
+      }
+      p {
+        font-size: 15px;
+        margin-bottom: 25px;
+        a {
+          text-decoration: none;
+        }
+      }
+      h3 {
+        margin-bottom: 25px;
+      }
+      form {
+        input, button {
+          font-family: 'Roboto', sans-serif;
+        }
+        label {
+        padding-left: 13px !important;
+        }
+        .form-group {
+          text-align: left;
+
+        }
+        .bottom-button {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
