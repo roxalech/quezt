@@ -79,12 +79,7 @@ body {
   max-height: 100%;
   margin: 0;
   font-family: 'Architects Daughter', cursive;
-}
-body {
-  background: url("../img/paper-background-2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #f3f3f4;
 }
 .header-links {
   float: right;
@@ -121,12 +116,13 @@ body {
   width: 80%;
   height: 60%;
   margin: 0 auto;
-  padding-top: 80px;
+  padding-top: 140px;
 }
 .landing-header {
   background: url("../img/StudyBuddy.png");
   background-position: left top;
   background-repeat: no-repeat;
+  background-size: contain;
   height: auto;
 }
 .landing-header p {
@@ -141,8 +137,26 @@ body {
   float: right;
   margin-right: 62px;
 }
-.landing-header form a {
+.landing-header form label {
+  padding-left: 13px !important;
+}
+.landing-header form button {
+  margin-left: 80px;
+}
+.landing-header form input,
+.landing-header form button {
+  font-family: 'Roboto', sans-serif;
+}
+.landing-header form button {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.landing-header .sign-up-section {
+  position: relative;
+}
+.landing-header .sign-up-section a {
   text-decoration: none;
+  margin-left: 40px;
   color: #334452;
   text-transform: uppercase;
   font-weight: 700;
@@ -153,8 +167,11 @@ body {
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
+  position: absolute;
+  right: 130px;
+  top: 75px;
 }
-.landing-header form a:hover {
+.landing-header .sign-up-section a:hover {
   color: #337ab7;
   border-top: 2px solid #337ab7;
   border-bottom: 2px solid #337ab7;
@@ -198,7 +215,7 @@ body {
 }
 .dashboard-inner .round-action {
   border-radius: 50%;
-  width: 60%;
+  width: 253px;
   margin: 0 auto;
   height: 253px;
   cursor: pointer;
@@ -322,7 +339,7 @@ body {
   padding: 17px 25px;
   position: relative;
   top: 25px;
-  left: 82px;
+  left: 146px;
   background-color: #ee7326;
   border-radius: 15px;
   color: #313e5c;
@@ -372,6 +389,21 @@ body {
 }
 .authentification-section .container-fluid .card p a {
   text-decoration: none;
+  color: #334452;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+.authentification-section .container-fluid .card p a:hover {
+  color: #337ab7;
+  border-top: 2px solid #337ab7;
+  border-bottom: 2px solid #337ab7;
 }
 .authentification-section .container-fluid .card h3 {
   margin-bottom: 25px;
@@ -380,6 +412,10 @@ body {
 .authentification-section .container-fluid .card form button {
   font-family: 'Roboto', sans-serif;
 }
+.authentification-section .container-fluid .card form button {
+  text-transform: uppercase;
+  font-weight: 700;
+}
 .authentification-section .container-fluid .card form label {
   padding-left: 13px !important;
 }
@@ -387,5 +423,38 @@ body {
   text-align: left;
 }
 .authentification-section .container-fluid .card form .bottom-button {
+  text-align: center;
+}
+.account-inner {
+  text-align: center;
+  padding-top: 50px;
+  width: 35%;
+  margin: 0 auto;
+}
+.account-inner .logo i {
+  padding: 5px 10px 0 0;
+}
+.account-inner p {
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+.account-inner h3 {
+  margin-bottom: 25px;
+}
+.account-inner form input,
+.account-inner form button {
+  font-family: 'Roboto', sans-serif;
+}
+.account-inner form button {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.account-inner form label {
+  padding-left: 13px !important;
+}
+.account-inner form .form-group {
+  text-align: left;
+}
+.account-inner form .bottom-button {
   text-align: center;
 }

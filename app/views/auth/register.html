@@ -24,7 +24,7 @@
             class="form-control"
             type='text'
             name='name'
-            placeholder='Full name'
+            placeholder='Full name *'
             value="{{ sess.historyData.name }}" />
         </div>
         <div class="form-group">
@@ -33,7 +33,7 @@
             class="form-control"
             type='text'
             name='email'
-            placeholder="Email"
+            placeholder="Email *"
             value="{{ sess.historyData.email }}" />
         </div>
         <div class="form-group">
@@ -42,7 +42,7 @@
             class="form-control"
             type='password'
             name='password'
-            placeholder="Password" />
+            placeholder="Password *" />
         </div>
         <div class="form-group">
           <label for="password-confirm">Confirm Password:</label>
@@ -50,7 +50,7 @@
             class="form-control"
             type='password'
             name='password_confirm'
-            placeholder='Confirm Password' />
+            placeholder='Confirm Password *' />
         </div>
         <div class="form-group bottom-button">
           <button
@@ -61,10 +61,10 @@
         </div>
       </form>
       <div class="already-account">
-        <p>Already have an account? You can
+        <p>Already have an account?<br/> You can
           <a href='{{ baseUrl }}/signin'
              title="Existing account sign in">
-             <b>SIGN IN</b>
+             <b>SIGN IN</b> <i class="fa fa-sign-in" aria-hidden="true"></i>
           </a>
           here!
         </p>
