@@ -5,19 +5,20 @@
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
 <div class="row">
-  <div class="container-fluid dashboard-inner">
-    <div class="col-md-4">
-      <h3 class="titles">Add a question</h3>
-    </div>
-    <div class="col-md-12"></div>
+  <div class="container-fluid add-questions-inner">
+      <h1 class="titles"><i class="fa fa-question" aria-hidden="true"></i> Add a question</h1>
+      <p>
+        Bla Bla Bla (de adaugat ceva povesti)
+      </p>
     <div
       data-module="add.question"
-      class="add-question col-md-offset-1 col-md-4">
+      class="add-question">
       <form
           id="question-form"
           role="form"
           method="post">
         <div class="form-group">
+          <label for="question-body">Question body</label>
           <input
               name="questionBody"
               type="text"
@@ -25,6 +26,7 @@
               placeholder="Question body *">
         </div>
         <div class="form-group">
+          <label for="answer-type">Answer type</label>
           <input
               type="text"
               class="form-control"
@@ -35,9 +37,9 @@
         <div class="answer-container">
           <button class="add-answer">+</button>
           <label>Add answer</label>
-
         </div>
         <div class="form-group">
+          <label for="choose-topic">Choose topic</label>
           <input
               type="text"
               class="form-control"
@@ -52,6 +54,7 @@
               <!--placeholder="Correct answer *">-->
         <!--</div>-->
         <div class="form-group">
+          <label for="difficulty-level">Difficulty level</label>
           <input
               type="text"
               class="form-control"
@@ -60,12 +63,13 @@
         </div>
         <button
           type="submit"
-          class="btn btn-default submit-btn"
-          >
+          class="btn btn-default submit-btn">
           Save
         </button>
+      <div class="messages-container">
         <span class="hide warning"></span>
         <span class="success">{{session.successMessage}}</span>
+      </div>
       </form>
     </div>
   </div>

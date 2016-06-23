@@ -12,6 +12,7 @@
         method='post'
         role="form">
     <div class="form-group">
+      <label for="password">Username:</label>
         <input
             type="text"
             class="form-control"
@@ -19,11 +20,19 @@
             placeholder="Username *">
     </div>
     <div class="form-group">
+      <label for="password">Password:</label>
         <input type="password" class="form-control" name="password" placeholder="Password *">
     </div>
     <button type="submit" class="btn btn-default login">Login</button>
-    <a href="{{baseUrl}}/register">Sign up <i class="fa fa-sign-in" aria-hidden="true"></i></a>
     </form>
+    <div class="clearfix"></div>
+    <div class="sign-up-section">
+      <p>
+        Don't have an account?<br />
+        Let's create one!
+      </p>
+      <a href="{{baseUrl}}/register">Sign up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+    </div>
   </div>
 </div>
 {% endblock %}
