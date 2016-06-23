@@ -84,6 +84,10 @@ body {
 .hide {
   display: none;
 }
+.dashboard-header {
+  background-color: grey;
+  box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.16);
+}
 .header-links {
   float: right;
   padding: 15px 0 15px 0;
@@ -460,4 +464,54 @@ body {
 }
 .account-inner form .bottom-button {
   text-align: center;
+}
+.add-questions-inner {
+  text-align: center;
+  padding-top: 50px;
+  width: 35%;
+  margin: 0 auto;
+}
+.add-questions-inner .logo i {
+  padding: 5px 10px 0 0;
+}
+.add-questions-inner p {
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+.add-questions-inner h3 {
+  margin-bottom: 25px;
+}
+.add-questions-inner form input,
+.add-questions-inner form button {
+  font-family: 'Roboto', sans-serif;
+}
+.add-questions-inner form button {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.add-questions-inner form label {
+  padding-left: 13px !important;
+}
+.add-questions-inner form .form-group {
+  text-align: left;
+}
+.add-questions-inner form .bottom-button {
+  text-align: center;
+}
+.add-questions-inner form .answer-container {
+  text-align: left;
+  margin-bottom: 15px;
+}
+.add-questions-inner form .answer-container label {
+  padding-left: 5px !important;
+}
+.add-questions-inner form .messages-container {
+  height: 20px;
+  margin-top: 15px;
+}
+.add-questions-inner form .messages-container .warning {
+  color: tomato;
+}
+.add-questions-inner form .messages-container .success {
+  color: #39b93b;
 }
