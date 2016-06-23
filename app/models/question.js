@@ -19,7 +19,7 @@ var QuestionSchema = new Schema({
   },
   body : {
     type:String,
-    es_indexed:true
+    es_indexed: true
   },
   answers: [
     {
@@ -37,7 +37,7 @@ var QuestionSchema = new Schema({
   ],
   answerType: {
     type: String,
-    default: 'single-choice'
+    default: 'single choice'
   },
   category: {
     type:String,
@@ -45,7 +45,7 @@ var QuestionSchema = new Schema({
   },
   difficulty : {
     type:String,
-    es_indexed:true
+    es_indexed: true
   }
 });
 
@@ -57,12 +57,14 @@ var Question = mongoose.model('Question', QuestionSchema);
 
 //Question.createMapping({
 //  "settings": {
+//    "number_of_shards": 1,
+//    "number_of_replicas": 0,
 //    "analysis": {
 //      "filter": {
 //        "edge_ngram_filter": {
 //          "type": "edge_ngram",
 //            "min_gram": 2,
-//            "max_gram": 20
+//            "max_gram": 15
 //        }
 //      },
 //      "analyzer": {

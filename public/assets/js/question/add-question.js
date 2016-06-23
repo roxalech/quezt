@@ -61,7 +61,7 @@
         //make answerType input readonly if a value has been introduced
         $type.attr('readonly', true);
         $warning.addClass('hide');
-        answerType == 'single' ? inputType = 'radio' : inputType = 'checkbox';
+        answerType == 'single choice' ? inputType = 'radio' : inputType = 'checkbox';
 
         template = `<div class="answer-item form-group">
           <input
