@@ -26,6 +26,7 @@ function getQuizData (req, res, next) {
 
   req.resources.nrOfQuestions = parseInt(data.questions);
 //console.log(typeof req.resources.nrOfQuestions)
+  //TODO trim each category
   req.resources.questionTypes = {
     categories: data.category.split(","),
     difficulty: data.difficulty
@@ -44,49 +45,48 @@ function getQuizQuestions (req, res, next) {
   }
   query.difficulty = difficultyLvl;
 
-  Question
-  .find(query)
-  .exec(function(err, results) {
-    if (err) {
-      console.log(err);
-      return next(err);
-    }
-
-    //console.log('res', results);
-    req.resources.quizQuestions = results;
-    next();
-  });
+  //Question
+  //.find(query)
+  //.exec(function(err, results) {
+  //  if (err) {
+  //    console.log(err);
+  //    return next(err);
+  //  }
+  //
+  //  //console.log('res', results);
+  //  req.resources.quizQuestions = results;
+  //  next();
+  //});
 
   //need a query that matches documents that have at least one
   //category from the categories array
   //and the given difficulty level
   //use match operator
-  //Question
-  //.search({
-  //  query: {
-  //    bool: {
-  //      filter: [{
-  //        terms: {
-  //          category: categories,
-  //          minimum_match: 1
-  //        }
-  //      },{
-  //        term: {difficulty: difficultyLvl}
-  //      }]
-  //    }
-  //  }
-  //},
-  //{ hydrate:true },
-  //function(err,results) {
-  //  if (err) {
-  //    return res.status(401).json({ message: err });
-  //  }
-  //  console.log(777, results.hits.hits);
-  //  //res.json(results)
-  //
-  //  req.resources.quizQuestions = results.hits.hits;
-  //  next();
-  //});
+  Question
+  .search({
+    query: {
+      bool: {
+        filter: [{
+          terms: {
+            category: categories
+          }
+        },{
+          term: {difficulty: difficultyLvl}
+        }]
+      }
+    }
+  },
+  { hydrate:true },
+  function(err,results) {
+    if (err) {
+      return res.status(401).json({ message: err });
+    }
+    console.log(777, results.hits.hits);
+    //res.json(results)
+
+    req.resources.quizQuestions = results.hits.hits;
+    next();
+  });
 }
 
 function generateQuiz (req, res, next) {

@@ -3,16 +3,20 @@
 {% block content %}
 {%include "./partials/header.html" %}
 {%include "./partials/navbar.html" %}
+<div><a href="{{baseUrl}}/forum">Go back to forum</a></div>
 <div>
   <div>{{topic.topic}}</div>
   {% for comment in comments %}
-  <div>{{comment.createdAt.toLocaleDateString()}} - {{comment.createdAt.toLocaleTimeString()}}</div>
+  <div>
+    <span>Posted at</span>
+    {{comment.createdAt.toLocaleDateString()}} - {{comment.createdAt.toLocaleTimeString()}}
+  </div>
   <div>{{comment.body}}</div>
-  <div>{{comment.user.name}}</div>
+  <div><span>User</span>{{comment.user.name}}</div>
   {% endfor %}
 </div>
-<div data-module="add.comment" class="comment-section">
-  <h3 class="titles">Add a comment</h3>
+<div data-module="add.comment" class="col-md-4 comment-section">
+  <span class="titles">Add a comment</span>
   <form
       data-hash="{{ topic.hash }}"
       id="comment-form">

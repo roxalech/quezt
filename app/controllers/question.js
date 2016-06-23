@@ -9,11 +9,14 @@ module.exports.addQuestion = addQuestion;
 module.exports.searchQuestion = searchQuestion;
 
 function addQuestionPage (req, res) {
-  res.render('question/add-question');
+  res.render('question/add-question', {
+    session: req.session.historyData
+  });
 }
 
 function addQuestion (req, res) {
-  var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category', 'correctAnswer');
+  req.session.historyData = {};
+  var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category');
   var answerArr = req.body.answers;
 
   var questionData = new Question({
@@ -21,16 +24,14 @@ function addQuestion (req, res) {
     answerType: data.answerType,
     difficulty: data.difficulty,
     category: data.category,
-    correct: data.correctAnswer,
     author:  req.user._id
   });
 
-
-
   for (var i = 0; i < answerArr.length; i++) {
     var answerObj = {
-      body: answerArr[i],
-      index: i
+      body: answerArr[i].body,
+      index: i,
+      correct: answerArr[i].correct
     }
     questionData.answers.push(answerObj);
   }
@@ -49,6 +50,7 @@ function addQuestion (req, res) {
       //console.log(222, res);
       //res.json(result);
     });
+    req.session.historyData['successMessage'] = 'Your question was added';
     res.json(result);
   });
 }

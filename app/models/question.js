@@ -17,7 +17,10 @@ var QuestionSchema = new Schema({
     ref: 'User',
     required: true
   },
-  body : {type:String, es_indexed:true},
+  body : {
+    type:String,
+    es_indexed:true
+  },
   answers: [
     {
       body: {
@@ -25,6 +28,10 @@ var QuestionSchema = new Schema({
       },
       index: {
         type: String
+      },
+      correct: {
+        type: Boolean,
+        select: false
       }
     }
   ],
@@ -32,11 +39,14 @@ var QuestionSchema = new Schema({
     type: String,
     default: 'single-choice'
   },
-  correct: {
-    type: String
+  category: {
+    type:String,
+    es_indexed:true
   },
-  category: {type:String, es_indexed:true},
-  difficulty : {type:String, es_indexed:true}
+  difficulty : {
+    type:String,
+    es_indexed:true
+  }
 });
 
 QuestionSchema.plugin(mongoosastic, {
@@ -46,11 +56,34 @@ QuestionSchema.plugin(mongoosastic, {
 var Question = mongoose.model('Question', QuestionSchema);
 
 //Question.createMapping({
-//  "analysis" : {
-//    "analyzer":{
-//      "content":{
-//        "type":"custom",
-//        "tokenizer":"whitespace"
+//  "settings": {
+//    "analysis": {
+//      "filter": {
+//        "edge_ngram_filter": {
+//          "type": "edge_ngram",
+//            "min_gram": 2,
+//            "max_gram": 20
+//        }
+//      },
+//      "analyzer": {
+//        "edge_ngram_analyzer": {
+//          "type": "custom",
+//            "tokenizer": "standard",
+//            "filter": [
+//            "lowercase",
+//            "edge_ngram_filter"
+//          ]
+//        }
+//      }
+//    }
+//  },
+//  "mappings": {
+//  "doc": {
+//    "properties": {
+//      "text_field": {
+//        "type": "string",
+//          "index_analyzer": "edge_ngram_analyzer",
+//          "search_analyzer": "standard"
 //      }
 //    }
 //  }

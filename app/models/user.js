@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const passwordHelper = require('../helpers/password');
 const _ = require('lodash');
-const shortId = require('shortid');
 
 var UserSchema = new Schema({
   username: {
