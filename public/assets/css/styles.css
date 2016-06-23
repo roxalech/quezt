@@ -81,6 +81,9 @@ body {
   font-family: 'Architects Daughter', cursive;
   background-color: #f3f3f4;
 }
+.hide {
+  display: none;
+}
 .header-links {
   float: right;
   padding: 15px 0 15px 0;

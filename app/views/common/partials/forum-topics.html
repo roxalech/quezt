@@ -1,7 +1,14 @@
 {%  for topic in topics %}
   <article>
-    <div>{{ topic.category }}</div>
-    <div><a href="{{ baseUrl }}/topics/{{ topic.hash }}">{{ topic.topic }}</a></div>
+    <div>
+      <span>Category</span>
+      {{ topic.category }}
+    </div>
+    <div>
+      <a href="{{ baseUrl }}/topics/{{ topic.hash }}">
+        {{ topic.topic }}
+      </a>
+    </div>
     <div>
       <a
         href="{{ baseUrl }}/topics/{{ topic.hash }}#comment"

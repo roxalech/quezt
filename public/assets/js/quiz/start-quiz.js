@@ -40,7 +40,7 @@
           window.location.href = '/quiz'
         })
         .fail(function(error) {
-          console.log(error)
+            console.log(JSON.parse(error.responseText))
           //var message = JSON.parse(error.responseText);
           //util.generateNoty('error', message.message);
         });
