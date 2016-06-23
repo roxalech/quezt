@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const Question = mongoose.model('Question');
+const Question = mongoose.model('Intrebare');
 
 module.exports.startQuiz = startQuizPage;
 module.exports.getQuizData = getQuizData;

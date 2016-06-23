@@ -105,7 +105,7 @@
 
       var $answers = $this.find('.answer');
       var answersObj = prepareAnswers($answers);
-      questionData['questionBody'] =  $('input[name="questionBody"]').val();
+      questionData['qBody'] =  $('input[name="questionBody"]').val();
       questionData['answers'] = answersObj.answers;
       questionData['difficulty'] = $('input[name="difficultyLvl"]').val();
       questionData['category'] = $('input[name="category"]').val();

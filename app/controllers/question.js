@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const Question = mongoose.model('Question');
+const Question = mongoose.model('Intrebare');
 
 module.exports.addQuestionPage = addQuestionPage;
 module.exports.addQuestion = addQuestion;
@@ -16,7 +16,7 @@ function addQuestionPage (req, res) {
 
 function addQuestion (req, res) {
   req.session.historyData = {};
-  var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category');
+  var data = _.pick(req.body, 'qBody', 'answerType', 'difficulty', 'category');
   var answerArr = req.body.answers;
 
   var questionData = new Question({
