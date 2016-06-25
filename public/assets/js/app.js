@@ -20,6 +20,9 @@ $(function() {
     }),
     'add.comment' : new APP.AddComment({
       el: '.comment-section'
+    }),
+    'take.quiz' : new APP.TakeQuiz({
+      el: '.take-quiz'
     })
   };
 

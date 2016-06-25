@@ -2,11 +2,13 @@
 
 const _ = require('lodash');
 const mongoose = require('mongoose');
-const Question = mongoose.model('Intrebare');
+const Question = mongoose.model('Question');
+const Answer = mongoose.model('Answer');
 
 module.exports.addQuestionPage = addQuestionPage;
 module.exports.addQuestion = addQuestion;
 module.exports.searchQuestion = searchQuestion;
+module.exports.saveJSON = saveJSON;
 
 function addQuestionPage (req, res) {
   res.render('question/add-question', {
@@ -14,44 +16,40 @@ function addQuestionPage (req, res) {
   });
 }
 
-function addQuestion (req, res) {
+function saveJSON (req, res) {
+  var questionData = {
+    question: req.resources.question,
+    answers: req.resources.answers
+  }
+  res.json(questionData);
+}
+
+function addQuestion (req, res, next) {
   req.session.historyData = {};
-  var data = _.pick(req.body, 'qBody', 'answerType', 'difficulty', 'category');
-  var answerArr = req.body.answers;
+  var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category');
 
   var questionData = new Question({
-    body: data.questionBody,
-    answerType: data.answerType,
-    difficulty: data.difficulty,
-    category: data.category,
+    content: data.questionBody,
+    answersType: data.answerType,
+    difficultyLvl: data.difficulty,
+    categories: data.category,
     author:  req.user._id
   });
-
-  for (var i = 0; i < answerArr.length; i++) {
-    var answerObj = {
-      body: answerArr[i].body,
-      index: i,
-      correct: answerArr[i].correct
-    }
-    questionData.answers.push(answerObj);
-  }
-
-  //console.log(11111, questionData)
 
   questionData.save(function (err, result) {
     if(err) {
       return res.status(401).json({ message: err });
     }
-    console.log('mongosave', result)
+
+    //console.log('mongosave', result)
     questionData.on('es-indexed', function(err, res){
       if (err) throw err;
       /* Document is indexed */
-
-      //console.log(222, res);
-      //res.json(result);
+      console.log('in es_indexed', res);
     });
     req.session.historyData['successMessage'] = 'Your question was added';
-    res.json(result);
+    req.resources.question = result;
+    next();
   });
 }
 
