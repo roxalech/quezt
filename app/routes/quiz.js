@@ -36,14 +36,21 @@ router.get(
 router.post(
   '/quiz-answers',
   auth.ensured,
-  solveQuizService.formatAnswerArr,
-  answerCtrl.getAnswers,
-  solveQuizService.calculateScore,
-  answerCtrl.showCorrectResult,
+  solveQuizService.formatAnswerArr, //transforms answers coming from request into mongoose object ids
+  answerCtrl.getAnswers, //gets the corresponding answer objects from db
+  solveQuizService.calculateScore, //depending on the correct answers
+  answerCtrl.getCorrectResults,
   answerCtrl.getAnswers,
   answerCtrl.correctAnswers,
-  quizCtrl.solveQuizJSON
+  quizCtrl.solveQuizRes
 );
+
+router.get(
+  '/quiz-answers',
+  quizCtrl.renderCorrect
+);
+
+
 
 
 module.exports = router;

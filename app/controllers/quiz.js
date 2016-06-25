@@ -11,8 +11,9 @@ module.exports.getQuestions = getQuizQuestions;
 module.exports.generateQuiz = generateQuiz;
 module.exports.takeQuizPage = takeQuizPage;
 module.exports.calculateEndTime = calculateEndTime;
-module.exports.solveQuizJSON = solveQuizJSON;
+module.exports.solveQuizRes = solveQuizRes;
 module.exports.generateQuizEnd = generateQuizEnd;
+module.exports.renderCorrect = renderCorrect;
 
 function startQuizPage (req, res) {
   res.render('quiz/start-quiz');
@@ -202,6 +203,20 @@ function takeQuizPage (req, res) {
 //  })
 //}
 
-function solveQuizJSON (req, res, next) {
-  res.json(req.resources.score);
+function solveQuizRes (req, res, next) {
+  var questionData = {
+    score: req.resources.score,
+    correctAnswers: req.session.historyData.correct
+  };
+  res.json(questionData);
+  //return res.redirect(304, '/quiz-answers');
+}
+
+function renderCorrect(req, res, next) {
+  console.log('in render corrct')
+  res.render('quiz/take-quiz', {
+    questions: req.session.finalQuestions,
+    correctAnswers: req.session.historyData.correct,
+    score: req.session.historyData.score
+  })
 }

@@ -13,6 +13,7 @@
     this.date = this.$el.attr('data-date');
     this.$display = this.$el.find('#time');
     this.$submit = this.$el.find('.quiz-submit');
+    this.$score = this.$el.find('.score');
   }
 
   TakeQuiz.prototype.initialize = initialize;
@@ -26,8 +27,15 @@
     var self = this;
     //var time = self.time;
     var $submit = self.$submit;
+    var $score = self.$score;
+
+    if($score.length) {
+      setTimeout(showModal, 5000);
+    }
 
     //TODO on page reload calculate the time again
+    //TODO show 00:00 when the result are being displayed
+    //show a modal asking if user wants to keep score and add it to his total score
     //display the time left
     startTimer(self.time * 60, self.$display);
 
@@ -35,10 +43,10 @@
       var $submitModal = $('#submit-quiz-modal');
       $submitModal.modal('show');
 
-      var $submit = $submitModal.find('.submit');
+      var $submitQuiz = $submitModal.find('.submit');
       var $cancel = $submitModal.find('.cancel');
 
-      $submit.on('click', function () {
+      $submitQuiz.on('click', function () {
         $submitModal.modal('hide');
 
         var url = baseUrl + '/quiz-answers';
@@ -68,6 +76,7 @@
         .post(url, data)
         .done(function (result) {
           console.log(result);
+          window.location.reload();
         })
         .fail(function (error) {
           console.log(error);
@@ -82,11 +91,12 @@
         //get the ratings and send them to route
         //should I keep ratings?
       });
+
       $cancel.on('click', function () {
         $submitModal.modal('hide');
       })
     });
-  }
+  } //end of bindHandlers
 
   function startTimer(duration, display) {
     var timer = duration, minutes, seconds;
@@ -103,6 +113,22 @@
         timer = duration;
       }
     }, 1000);
+  }
+
+  function showModal () {
+    var $submitModal = $('#keep-score-modal');
+    $submitModal.modal('show');
+
+    var $submit = $submitModal.find('.submit');
+    var $cancel = $submitModal.find('.cancel');
+
+    $submit.on('click', function () {
+      //TODO add quiz score to user score
+    });
+
+    $cancel.on('click', function () {
+      $submitModal.modal('hide');
+    })
   }
 
 })(APP, APP, CONFIG, $);

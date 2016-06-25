@@ -10,7 +10,7 @@ module.exports.nrOfCorrect = nrOfCorrect;
 module.exports.formatAnswer = formatAnswer;
 module.exports.getQuestionAnswers = getQuestionAnswers;
 module.exports.getAnswers = getAnswers;
-module.exports.getCorrectResult = getCorrectResult;
+module.exports.getCorrectResults = getCorrectResults;
 module.exports.correctAnswers = correctAnswers;
 
 function nrOfCorrect (req, res, next) {
@@ -137,7 +137,7 @@ function getAnswers (req, res, next) {
   });
 }
 
-function getCorrectResult (req, res, next) {
+function getCorrectResults (req, res, next) {
   var quizQuestions = req.session.finalQuestions;
   console.log('??', quizQuestions);
 
@@ -152,14 +152,14 @@ function getCorrectResult (req, res, next) {
     }
 
     console.log('answers', result)
-    req.resources.answerIds = result;
+    req.resources.correctAnswers = result;
     next();
   })
 }
 
 function correctAnswers (req, res, next) {
   //TODO Delete History data on page reload
-  req.session.historyData = {};
-  req.session.historyData.correct =  req.resources.answerIds;
+  req.session.historyData = req.session.historyData || {};
+  req.session.historyData.correct =  req.resources.correctAnswers;
   next();
 }

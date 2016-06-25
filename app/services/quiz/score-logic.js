@@ -38,6 +38,7 @@ module.exports.formatAnswerArr = formatAnswerArr;
 //}
 
 function calculateScore (req, res, next) {
+  req.session.historyData = req.session.historyData || {};
   var answers = req.resources.answers;
   var score = 0;
 
@@ -50,13 +51,15 @@ function calculateScore (req, res, next) {
   }
 
   console.log(score)
-  req.resources.score = Math.round(score);
+  req.session.historyData.score = Math.round(score);
   next();
 }
 
 
 
 function formatAnswerArr (req, res, next) {
+  delete req.session.historyData.correct;
+
   var userAnswers = req.body.userAnswers;
   var answerIds = [];
 
