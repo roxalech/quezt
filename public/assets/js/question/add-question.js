@@ -74,11 +74,13 @@
             type=${inputType}
             class="correct form-control"
             name='correct'>
+          <p> (check if this is correct)</p>
           <button
             id=${$index}
             class="delete btn btn-danger">
             x
           </button>
+          <p class="delete-para"> (delete this answer)</p>
         </div> `;
 
         index++;

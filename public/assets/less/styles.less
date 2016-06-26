@@ -87,11 +87,11 @@ body {
 }
 .dashboard-header {
   background-color: rgba(142, 91, 156, 0.86);
-  box-shadow: 0 7px 6px 0 rgba(142, 91, 156, 0.86);
+  height: 63px;
 }
 .header-links {
   float: right;
-  padding: 15px 0 15px 0;
+  padding: 19px 0 15px 0;
 }
 .header-links li {
   list-style: none;
@@ -182,6 +182,9 @@ body {
     }
   }
 }
+.navbar-header-second {
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(0,0,0,.16)}
 .inner-landing h1 {
   text-align: center;
 }
@@ -208,6 +211,11 @@ body {
 .dashboard-header .header-links li:first-of-type {
   border: 0;
   padding: 0;
+}
+.dashboard-header a {
+  font-size: 38px;
+  text-decoration: none;
+  color: #334452;
 }
 .dashboard-inner {
   margin-top: 50px;
@@ -514,6 +522,29 @@ body {
       margin-bottom: 15px;
       label {
         padding-left: 5px !important;
+      }
+      .answer-item {
+        position: relative;
+        .correct {
+          width: 18px;
+          height: 18px;
+          margin-left: 80px;
+        }
+        .delete {
+          padding: 0px 5px;
+          position: absolute;
+          top: 38px;
+          right: 80px;
+        }
+        p {
+          padding-top: 5px;
+        }
+        .delete-para {
+          position: absolute;
+          right: 19px;
+          top: 62px;
+          padding-top: 0;
+        }
       }
     }
     .messages-container {

@@ -4,7 +4,6 @@
 {%include "../common/partials/header.html" %}
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
-<div class="row">
   <div class="container-fluid dashboard-inner">
     <div class="col-md-4">
       <h3 class="titles">Quiz generator</h3>
@@ -17,6 +16,7 @@
               name="category"
               type="text"
               class="form-control"
+              autocomplete="off"
               placeholder="Choose a category *">
         </div>
         <div class="form-group">
@@ -24,6 +24,7 @@
               type="text"
               class="form-control"
               name="difficulty"
+              autocomplete="off"
               placeholder="Difficulty level *">
         </div>
         <div class="form-group">
@@ -31,6 +32,7 @@
               type="text"
               class="form-control"
               name="questions"
+              autocomplete="off"
               placeholder="Number of questions *">
         </div>
         <button
@@ -41,6 +43,5 @@
       </form>
     </div>
   </div>
-</div>
 {%include "../common/partials/footer.html" %}
 {% endblock %}
