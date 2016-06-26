@@ -1,18 +1,54 @@
 {% extends "../layout.html" %}
 
 {% block content %}
-<div class="">
+<div
+  data-module="take.quiz"
+  data-time="{{time.minutes}}"
+  data-date="{{time.date}}"
+  class="take-quiz">
+  {% if historyData.correct %}
+    <div>Time left to solve the quiz: <span id="time"></span></div>
+  {% endif %}
   <div class="warning">{{historyData.errorMessage}}</div>
   <div class="container-fluid col-offset-md-4">
     {% for question in questions %}
-      <div>{{question.body}}</div>
+      <div class="content">{{question.content}}</div>
+
+      {% if historyData.correct %}
+        <span>The correct answer was:</span>
+        {% for answer in historyData.correct %}
+          {% if answer.question.toString() == question._id.toString() %}
+            {% if answer.correct == true %}
+              <span>{{answer.body}}</span>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
       {% for answer in question.answers %}
-        {% if question.answerType == 'single' %}
-          <input type="radio" name="{{answer.index}}" id="{{answer._id}}-{{answer.index}}"/>
-          <label for="{{answer._id}}-{{answer.index}}">{{answer.body}}</label>
+        {% if question.answersType == 'single choice' %}
+          <input
+            class="answer"
+            type="radio"
+            name="{{question._id}}"
+            data-id="{{answer._id}}"
+            data-dif="{{question.difficultyLvl}}" />
+          <label for="{{answer._id}}">{{answer.body}}</label>
+        {% else %}
+          <input
+            class="answer"
+            type="checkbox"
+            name="{{question._id}}"
+            data-id="{{answer._id}}"
+            data-dif="{{question.difficultyLvl}}" />
+          <label for="{{answer._id}}">{{answer.body}}</label>
         {% endif %}
       {% endfor %}
     {% endfor %}
-    </div>
   </div>
+  <div><button class="quiz-submit">Submit</button></div>
+  {% if historyData.score %}
+    <div><span class="score">Your score is: {{historyData.score}}</span></div>
+  {% endif %}
+</div>
 {% endblock %}

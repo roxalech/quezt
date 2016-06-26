@@ -17,35 +17,32 @@ var QuestionSchema = new Schema({
     ref: 'User',
     required: true
   },
-  body : {
-    type:String,
-    es_indexed: true
+  content : {
+    type:String
   },
-  answers: [
-    {
-      body: {
-        type: String
-      },
-      index: {
-        type: String
-      },
-      correct: {
-        type: Boolean,
-        select: false
-      }
-    }
-  ],
-  answerType: {
+  //answers: [
+  //  {
+  //    body: {
+  //      type: String
+  //    },
+  //    index: {
+  //      type: String
+  //    },
+  //    correct: {
+  //      type: Boolean,
+  //      select: false
+  //    }
+  //  }
+  //],
+  answersType: {
     type: String,
     default: 'single choice'
   },
-  category: {
-    type:String,
-    es_indexed:true
+  categories: {
+    type:String
   },
-  difficulty : {
-    type:String,
-    es_indexed: true
+  difficultyLvl : {
+    type:String
   }
 });
 
@@ -63,29 +60,90 @@ var Question = mongoose.model('Question', QuestionSchema);
 //      "filter": {
 //        "edge_ngram_filter": {
 //          "type": "edge_ngram",
-//            "min_gram": 2,
-//            "max_gram": 15
+//          "min_gram": 2,
+//          "max_gram": 15,
+//          "token_chars": [
+//            "letter",
+//            "digit",
+//            "punctuation"
+//          ]
+//        },
+//        "nGram_filter": {
+//          "type": "nGram",
+//          "min_gram": 2,
+//          "max_gram": 20,
+//          "token_chars": [
+//            "letter",
+//            "digit",
+//            "punctuation",
+//          ]
+//        },
+//        "my_stopwords": {
+//          "type":       "stop",
+//          "stopwords": [ "the", "a" ]
 //        }
 //      },
 //      "analyzer": {
 //        "edge_ngram_analyzer": {
 //          "type": "custom",
-//            "tokenizer": "standard",
-//            "filter": [
+//          "tokenizer": "whitespace",
+//          "filter": [
 //            "lowercase",
-//            "edge_ngram_filter"
+//            "edge_ngram_filter",
+//            "my_stopwords"
+//          ]
+//        },
+//        "nGram_analyzer": {
+//          "type": "custom",
+//          "tokenizer": "whitespace",
+//          "filter": [
+//            "lowercase",
+//            "nGram_filter"
+//          ]
+//        },
+//        "whitespace_analyzer": {
+//          "type": "custom",
+//          "tokenizer": "whitespace",
+//          "filter": [
+//            "lowercase",
+//            "my_stopwords"
+//          ]
+//        },
+//        "body_analyzer": {
+//          "type": "custom",
+//          "char_filter": [ "html_strip" ],
+//          "tokenizer": "standard",
+//          "filter": [
+//            "lowercase",
+//            "my_stopwords"
 //          ]
 //        }
 //      }
 //    }
 //  },
 //  "mappings": {
-//  "doc": {
-//    "properties": {
-//      "text_field": {
-//        "type": "string",
-//          "index_analyzer": "edge_ngram_analyzer",
-//          "search_analyzer": "standard"
+//    "user-questions": {
+//      "properties": {
+//        "content": {
+//          "type": "string",
+//          "analyzer": "body_analyzer",
+//          "search_analyzer": "whitespace_analyzer"
+//        },
+//        "categories": {
+//          "type": "string",
+//          "analyzer": "edge_ngram_analyzer",
+//          "search_analyzer": "whitespace_analyzer"
+//        },
+//        "difficultyLvl": {
+//          "type": "string",
+//          "analyzer": "edge_ngram_analyzer",
+//          "search_analyzer": "whitespace_analyzer"
+//        },
+//        "answersType": {
+//          "type": "string",
+//          "analyzer": "nGram_analyzer",
+//          "search_analyzer": "whitespace_analyzer"
+//        }
 //      }
 //    }
 //  }
@@ -99,4 +157,4 @@ var Question = mongoose.model('Question', QuestionSchema);
 //  }
 //});
 
-//module.exports = Question;
+module.exports = Question;
