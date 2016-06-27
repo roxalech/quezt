@@ -54,15 +54,42 @@ function addQuestion (req, res, next) {
 }
 
 function searchQuestion(req, res, next) {
-  Question.search(
-    {query_string: {query: "g"}},
-    { hydrate:true },
-    function(err,results) {
-      if (err) {
-        return res.status(401).json({ message: err });
+  Question
+  .search({
+    query_string: {query: "g"}
+  },{ 
+    hydrate:true 
+  },
+  function(err,results) {
+    if (err) {
+      return res.status(401).json({ message: err });
+    }
+    console.log(2222, results.hits.hits);
+    res.json(results)
+    //next();
+  });
+}
+
+function verifyQuestionMatches (req, res, next) {
+  var questionContent = req.body.content;
+
+  console.log('content from ui', content);
+
+  Question
+  .search({
+    query: {
+      match: {
+        content: questionContent
       }
-      console.log(2222, results.hits.hits);
-      res.json(results)
-      //next();
-    });
-  }
+    }
+  },{ 
+    hydrate:true 
+  }, function(err,results) {
+    if (err) {
+      return res.status(401).json({ message: err });
+    }
+    console.log(2222, results.hits.hits);
+    res.json(results)
+    //next();
+  });
+}

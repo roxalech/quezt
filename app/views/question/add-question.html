@@ -8,7 +8,7 @@
   <div class="container-fluid add-questions-inner">
       <h1 class="titles"><i class="fa fa-question" aria-hidden="true"></i> Add a question</h1>
       <p>
-        Bla Bla Bla (de adaugat ceva povesti)
+        Add a question on whatever topic you'd like and we'll show you if it has been added before
       </p>
     <div
       data-module="add.question"
@@ -23,7 +23,11 @@
               name="questionBody"
               type="text"
               class="form-control"
-              placeholder="Question body *">
+              placeholder="Question body *"
+              id="content">
+        </div>
+        <div class="question-matches">
+          <p> No matching questions found</p>
         </div>
         <div class="form-group">
           <label for="answer-type">Answer type</label>

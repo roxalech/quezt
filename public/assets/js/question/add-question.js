@@ -13,6 +13,7 @@
     this.$addAnswer = this.$el.find('.add-answer');
     this.$answerContainer = this.$el.find('.answer-container');
     this.$success = this.$addQuestionForm.find('.success');
+    this.$questionContent = this.$addQuestionForm.find('#content');
   }
 
   AddQuestion.prototype.initialize = initialize;
@@ -33,7 +34,30 @@
     var index = 0;
     var $type = $addQuestionForm.find('#type');
     var $warning = $addQuestionForm.find('.warning');
+    var $questionContent = self.$questionContent;
     //var $success = this.$success;
+
+    $questionContent.on('click', function () {
+      var $this = $(this);
+      var value = $this.val();
+      var url = baseUrl + '/match-questions';
+      var data = {
+        content : value
+      };
+
+      if (value) {
+        util
+        .post(url, data)
+        .done(function (result) {
+          console.log(result);
+
+          
+        })
+        .fail(function (err) {
+          console.log(err);
+        })
+      }
+    })
 
     $type.on('keyup', function () {
       if($(this).val()) {

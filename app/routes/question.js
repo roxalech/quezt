@@ -29,4 +29,10 @@ router.get(
   questionCtrl.searchQuestion
 );
 
+router.post(
+  '/match-questions',
+  auth.ensured,
+  questionCtrl.verifyMatches
+);
+
 module.exports = router;
