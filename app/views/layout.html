@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Study buddy</title>
-    {% block head %}
-    {% include "includes/stylesheets.html" %}
-    {% endblock %}
+	<meta charset="UTF-8">
+	<title>Study buddy</title>
+	{% block head %}
+	{% include "includes/stylesheets.html" %}
+	{% endblock %}
 </head>
 <body>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-    {% include "common/modals/submit-quiz.html" %}
-    {% block scripts %}
-    <script type="text/javascript">
-        (function() {
-            'use strict';
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+	{% include "common/modals/submit-quiz.html" %}
+	{% block scripts %}
+	<script type="text/javascript">
+		(function() {
+			'use strict';
 
-            window['CONFIG'] = {
-                baseUrl: '{{ baseUrl }}'
-            };
-        }());
-    </script>
-    {% include "includes/scripts.html" %}
-    {% endblock %}
+			window['CONFIG'] = {
+				baseUrl: '{{ baseUrl }}'
+			};
+		}());
+	</script>
+	{% include "includes/scripts.html" %}
+	{% endblock %}
 </body>
 </html>

@@ -14,29 +14,32 @@
       data-module="add.question"
       class="add-question">
       <form
-          id="question-form"
-          role="form"
-          method="post">
+        class="all-form-group"
+        id="question-form"
+        role="form"
+        method="post">
         <div class="form-group">
           <label for="question-body">Question body</label>
           <input
-              name="questionBody"
-              type="text"
-              class="form-control"
-              placeholder="Question body *"
-              id="content">
+						name="questionBody"
+						type="text"
+						class="form-control"
+						placeholder="Question body *"
+						id="questionContent">
         </div>
+        <button id="content">Search for similar questions</button>
         <div class="question-matches">
-          <p> No matching questions found</p>
-        </div>
+          <p class=" hide no-matches"> No matching questions found</p>
+					<ul class="matches"></ul>
+				</div>
         <div class="form-group">
           <label for="answer-type">Answer type</label>
           <input
-              type="text"
-              class="form-control"
-              name="answerType"
-              id="type"
-              placeholder="Answer type *">
+						type="text"
+						class="form-control"
+						name="answerType"
+						id="type"
+						placeholder="Answer type *">
         </div>
         <div class="answer-container">
           <button class="add-answer">+</button>
@@ -45,10 +48,11 @@
         <div class="form-group">
           <label for="choose-topic">Choose topic</label>
           <input
-              type="text"
-              class="form-control"
-              name="category"
-              placeholder="Choose topic *">
+						type="text"
+						class="form-control"
+						name="category"
+						placeholder="Choose topic *"
+						id="categoryInput">
         </div>
         <!--<div class="form-group">-->
           <!--<input-->
@@ -60,10 +64,10 @@
         <div class="form-group">
           <label for="difficulty-level">Difficulty level</label>
           <input
-              type="text"
-              class="form-control"
-              name="difficultyLvl"
-              placeholder="Difficulty level *">
+						type="text"
+						class="form-control"
+						name="difficultyLvl"
+						placeholder="Difficulty level *">
         </div>
         <button
           type="submit"

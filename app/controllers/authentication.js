@@ -14,24 +14,19 @@ module.exports.signout = signout;
 function signinUser (req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err || !user) {
-      // return res.status(400).send(info);
-
-      return handleResponse(400, info, req, res);
+      req.session.historyData = info.message;
+      return res.redirect('/signin');
     }
+
     req.logIn(user, function(err) {
       if (err) {
         return next(err);
       }
 
-      //res.status(200).json(user);
-      //if (req.body.signinType == 'modal') {
-      //  return res.json(user);
-      //}
-
       res.redirect('/');
     });
   })(req, res, next);
-};
+}
 
 function registerUser (req, res) {
   req.session.historyData = req.body;
@@ -41,9 +36,16 @@ function registerUser (req, res) {
     return res.redirect('/register');
   }
 
+  if (!req.body.email) {
+    req.session.historyData.errorMessage = 'Email field is missing'; // 'Parola si confirma parola nu sunt la fel.'
+    return res.redirect('/register');
+  }
+
   var userData = _.pick(req.body, 'name', 'email', 'password');
 
   User.register(userData, function(err, user) {
+    console.log('CTRL Register err', err);
+
     if (err && (11000 === err.code || 11001 === err.code)) {
       req.session.historyData.errorMessage = 'E-mail is already in use.'; // 'Există deja un cont cu adresa de e-mail precizată.'
       return res.redirect('/register');
@@ -51,7 +53,7 @@ function registerUser (req, res) {
 
     if (err) {
       req.session.historyData.errorMessage = 'Something went wrong, please try later.'; // 'A apărut o eroare, vă rugăm încercați mai târziu'
-      return res.redirect('/regiter');
+      return res.redirect('/register');
     }
 
     req.logIn(user, function(err) {
@@ -63,13 +65,23 @@ function registerUser (req, res) {
 };
 
 function signinPage(req, res) {
+  if (req.user) {
+    delete req.session.historyData;
+    return res.redirect('/');
+  }
 
-  res.render('auth/signin');
+  res.render('auth/signin', {
+    historyData: req.session.historyData
+  });
+  delete req.session.historyData;
 }
 
 function registerPage(req, res) {
 
-  res.render('auth/register');
+  res.render('auth/register', {
+    historyData: req.session.historyData
+  });
+  delete req.session.historyData;
 }
 
 function signout (req, res, next) {

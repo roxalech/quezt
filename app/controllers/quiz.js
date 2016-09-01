@@ -16,7 +16,9 @@ module.exports.generateQuizEnd = generateQuizEnd;
 module.exports.renderCorrect = renderCorrect;
 
 function startQuizPage (req, res) {
-  res.render('quiz/start-quiz');
+  res.render('quiz/start-quiz', {
+    historyData: req.session.historyData
+  });
 }
 
 function getQuizData (req, res, next) {
@@ -150,7 +152,13 @@ function calculateEndTime (req, res, next) {
 }
 
 function generateQuizEnd (req, res) {
-  return res.redirect(304, '/quiz');
+  console.log('historyData', req.session.historyData);
+  if (req.session.historyData.errorMessage) {
+    console.log('historyData in if', req.session.historyData);
+    return res.redirect(304, '/start-quiz');
+  } else {
+    return res.redirect(304, '/quiz');
+  }
 }
 
 function takeQuizPage (req, res) {

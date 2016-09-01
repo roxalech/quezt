@@ -31,9 +31,17 @@ module.exports.verify = verify;
 function hashPassword(password, salt, callback) {
   var len = LEN / 2;
 
+  //3 arguments will be used on authentication
   if (3 === arguments.length) {
-    generateDerivedKey(password, salt, ITERATIONS, len, DIGEST, callback);
+    crypto.pbkdf2(password, salt, ITERATIONS, len, DIGEST, function(err, derivedKey) {
+      if (err) {
+        return callback(err);
+      }
+
+      return callback(null, derivedKey.toString('hex'));
+    });
   } else {
+    // 2 arguments will be used on register, salt is actually the callback
     callback = salt;
     crypto.randomBytes(SALT_LEN / 2, function (err, salt) {
       if (err) {
@@ -41,27 +49,27 @@ function hashPassword(password, salt, callback) {
       }
 
       salt = salt.toString('hex');
-      generateDerivedKey(password, salt, ITERATIONS, len, DIGEST, callback);
-      // crypto.pbkdf2(password, salt, ITERATIONS, len, DIGEST, (err, derivedKey) => {
-      //   if (err) {
-      //     return callback(err);
-      //   }
-      //
-      //   callback(null, derivedKey.toString('hex'), salt);
-      // });
+
+      crypto.pbkdf2(password, salt, ITERATIONS, len, DIGEST, function (err, derivedKey) {
+        if (err) {
+         return callback(err);
+        }
+
+        callback(null, derivedKey.toString('hex'), salt);
+      });
     });
   }
 }
 
-function generateDerivedKey(password, salt, iterations, len, digest, callback) {
-  crypto.pbkdf2(password, salt, ITERATIONS, len, DIGEST, function (err, derivedKey) {
-    if (err) {
-      return callback(err);
-    }
-
-    return callback(null, derivedKey.toString('hex'), salt);
-  });
-}
+//function generateDerivedKey(password, salt, iterations, len, digest, callback) {
+//  crypto.pbkdf2(password, salt, ITERATIONS, len, DIGEST, function (err, derivedKey) {
+//    if (err) {
+//      return callback(err);
+//    }
+//
+//    return callback(null, derivedKey.toString('hex'), salt);
+//  });
+//}
 
 /**
  *  Verifies if a password matches a hash by hashing the password

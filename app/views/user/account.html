@@ -9,19 +9,20 @@
     <h1><i class="fa fa-user" aria-hidden="true"></i> Public profile</h1>
     <p>Edit what will be displayed on your public profile.</p>
     <form
-        data-module="edit.profile"
-        id="edit-profile-form"
-        enctype="application/x-www-form-urlencoded">
+      class="all-form-group"
+      data-module="edit.profile"
+      id="edit-profile-form"
+      enctype="application/x-www-form-urlencoded">
       <div class="form-group">
         <label for="name">Name</label>
         <input
-            class="form-control"
-            id="name"
-            type="text"
-            name="name"
-            placeholder="Your name"
-            value="{{ currentUser.name }}"
-            required>
+          class="form-control"
+          id="name"
+          type="text"
+          name="name"
+          placeholder="Your name"
+          value="{{ currentUser.name }}"
+          required>
         <p class="has-error" id="validation-name">
           {% if historyData.name == 'name' %}{{ historyData.errorMessage }}{% endif %}
         </p>
@@ -29,13 +30,13 @@
       <div class="form-group">
         <label for="username">Username (nickname)</label>
         <input
-            class="form-control"
-            id="username"
-            type="text"
-            name="username"
-            placeholder="Your username"
-            value="{{ currentUser.username }}"
-            required>
+          class="form-control"
+          id="username"
+          type="text"
+          name="username"
+          placeholder="Your username"
+          value="{{ currentUser.username }}"
+          required>
         <p class="has-error" id="validation-username">
           {% if historyData.name == 'username' %}{{ historyData.errorMessage }}{% endif %}
         </p>
@@ -43,12 +44,12 @@
       <div class="form-group">
         <label for="email">Email</label>
         <input
-            class="form-control"
-            id="email"
-            type="text"
-            name="email"
-            placeholder="Email address"
-            value="{{ currentUser.email }}">
+          class="form-control"
+          id="email"
+          type="text"
+          name="email"
+          placeholder="Email address"
+          value="{{ currentUser.email }}">
         <p class="has-error" id="validation-email">
           {% if historyData.name == 'email' %}{{ historyData.errorMessage }}{% endif %}
         </p>

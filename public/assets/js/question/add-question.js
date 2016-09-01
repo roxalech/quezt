@@ -14,6 +14,7 @@
     this.$answerContainer = this.$el.find('.answer-container');
     this.$success = this.$addQuestionForm.find('.success');
     this.$questionContent = this.$addQuestionForm.find('#content');
+    this.$categoryInput = this.$addQuestionForm.find('#categoryInput');
   }
 
   AddQuestion.prototype.initialize = initialize;
@@ -35,28 +36,72 @@
     var $type = $addQuestionForm.find('#type');
     var $warning = $addQuestionForm.find('.warning');
     var $questionContent = self.$questionContent;
+    var $categoryInput = self.$categoryInput;
+    var $matchedQuestions = $addQuestionForm.find('.matches');
+    var $noMatches = $addQuestionForm.find('.no-matches');
     //var $success = this.$success;
+    var search = false;
+    var foundMatches = 0;
 
-    $questionContent.on('click', function () {
+    //Search similar questions
+    $questionContent.on('click', function (e) {
       var $this = $(this);
-      var value = $this.val();
+      var $input = $addQuestionForm.find('#questionContent');
+      var value = $input.val();
       var url = baseUrl + '/match-questions';
       var data = {
         content : value
       };
+      search = true;
 
+      $matchedQuestions.empty();
       if (value) {
         util
         .post(url, data)
         .done(function (result) {
           console.log(result);
 
-          
+          var matchedQuestions = result.hits.hits;
+          foundMatches = matchedQuestions.length;
+
+          if (matchedQuestions.length) {
+            var template = ``;
+            $noMatches.addClass('hide');
+
+            for (var i = 0; i < matchedQuestions.length; i++) {
+              console.log('item', matchedQuestions[i]);
+              if (matchedQuestions[i]) {
+                console.log('item', matchedQuestions[i].content);
+                template += `<li>${matchedQuestions[i].content}</li>`;
+              }
+            }
+
+            $(template).appendTo($matchedQuestions);
+          } else {
+            $noMatches.removeClass('hide');
+          }
         })
         .fail(function (err) {
           console.log(err);
         })
       }
+    });
+
+    $categoryInput.on('keyup', function(e) {
+      var value = $(this).val();
+      var url = baseUrl + '/suggest-categories';
+      var data = { category: value };
+      console.log(value);
+      util
+        .post(url, data)
+        .done(function (result) {
+          console.log(result);
+
+
+        })
+        .fail(function (err) {
+          console.log(err);
+        })
     })
 
     $type.on('keyup', function () {
@@ -120,6 +165,7 @@
       //self.checkForCorrect();
     });
 
+    //TODO on submit only if you select the first checkbox of the answer works
     $addQuestionForm.submit(function (e) {
       e.preventDefault();
       var $this = $(this);
@@ -153,18 +199,32 @@
           $warning.removeClass('hide');
           $warning.text('You must complete all fields');
         } else {
-          util
-          .post(url, questionData)
-          .done(function(result) {
-            console.log(result);
-            //add noty
-            window.location.reload();
-          })
-          .fail(function(error) {
-            console.log(error);
-            //var message = JSON.parse(error.responseText);
-            //util.generateNoty('error', message.message);
-          });
+
+          if (!search) {
+            $warning.removeClass('hide');
+            $warning.text('You must search for similar questions');
+          } else {
+
+            // TODO figure out how to calculate similarity
+            if (foundMatches) {
+              $warning.removeClass('hide');
+              $warning.text('It seems that similar questions have already been added');
+            } else {
+
+              util
+              .post(url, questionData)
+              .done(function (result) {
+                console.log(result);
+                //add noty
+                window.location.reload();
+              })
+              .fail(function (error) {
+                console.log(error);
+                //var message = JSON.parse(error.responseText);
+                //util.generateNoty('error', message.message);
+              });
+            }
+          }
         }
       }
     });

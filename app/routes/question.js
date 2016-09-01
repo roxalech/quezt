@@ -35,4 +35,11 @@ router.post(
   questionCtrl.verifyMatches
 );
 
+router.post(
+  '/suggest-categories',
+  auth.ensured,
+  questionCtrl.suggestCategories
+);
+
+
 module.exports = router;

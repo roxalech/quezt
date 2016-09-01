@@ -9,12 +9,13 @@
         A perfect helper for your exams.</br>
       </p>
       <h3>Create new account! Is <b>FREE!</b></h3>
-      {% if sess.historyData.errorMessage %}
+      {% if historyData.errorMessage %}
       <div class="has-error">
-        <label class="control-label">{{ sess.historyData.errorMessage }}</label>
+        <label class="control-label">{{ historyData.errorMessage }}</label>
       </div>
       {% endif %}
       <form
+        class="all-form-group"
         action='{{ baseUrl }}/register'
         method='post'
         id="register-form">

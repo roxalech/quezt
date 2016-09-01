@@ -9,6 +9,8 @@ module.exports.addQuestionPage = addQuestionPage;
 module.exports.addQuestion = addQuestion;
 module.exports.searchQuestion = searchQuestion;
 module.exports.saveJSON = saveJSON;
+module.exports.verifyMatches = verifyQuestionMatches;
+module.exports.suggestCategories = suggestCategories;
 
 function addQuestionPage (req, res) {
   res.render('question/add-question', {
@@ -73,7 +75,7 @@ function searchQuestion(req, res, next) {
 function verifyQuestionMatches (req, res, next) {
   var questionContent = req.body.content;
 
-  console.log('content from ui', content);
+  //console.log('content from ui', questionContent);
 
   Question
   .search({
@@ -88,8 +90,29 @@ function verifyQuestionMatches (req, res, next) {
     if (err) {
       return res.status(401).json({ message: err });
     }
-    console.log(2222, results.hits.hits);
-    res.json(results)
-    //next();
+    console.log('QUERY RESULTS', results.hits.hits);
+    res.json(results);
   });
+}
+
+function suggestCategories (req, res, next) {
+  var categoryCrumb = req.body.category;
+  console.log('ui cateogry', categoryCrumb);
+
+  Question
+    .search({
+      query: {
+        match: {
+          categories: categoryCrumb
+        }
+      }
+    },{
+      hydrate:true
+    }, function(err,results) {
+      if (err) {
+        return res.status(401).json({ message: err });
+      }
+      console.log('QUERY RESULTS', results.hits.hits);
+      res.json(results);
+    });
 }

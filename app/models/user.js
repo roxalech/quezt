@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 const passwordHelper = require('../helpers/password');
 const _ = require('lodash');
+const shortId = require('shortid');
 
 var UserSchema = new Schema({
   username: {
@@ -40,10 +41,8 @@ var UserSchema = new Schema({
 UserSchema.pre('save', function(next) {
   var self = this;
   this.username = this.username || shortId.generate();
-  console.log(999, !(this.isNew))
 
   return next();
-
 });
 
 /**
@@ -96,7 +95,7 @@ UserSchema.statics.authenticate = function(email, password, callback) {
 UserSchema.statics.register = function(opts, callback) {
   var self = this;
   var data = _.cloneDeep(opts);
-console.log(data)
+
   if (!opts.password) {
     return callback(new Error('missing password'));
   }
@@ -112,6 +111,9 @@ console.log(data)
 
     //create the user
     self.model('User').create(data, function(err, user) {
+      console.log('MODEL register user', user);
+      console.log('MODEL register err', err);
+
       if (err) {
         return callback(err, null);
       }
@@ -120,7 +122,7 @@ console.log(data)
       user.password = undefined;
       user.passwordSalt = undefined;
       // return user if everything is ok
-      callback(err, user);
+      callback(null, user);
     });
   });
 };
