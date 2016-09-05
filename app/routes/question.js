@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const questionCtrl = require('../controllers/question');
 const answerCtrl = require('../controllers/answer');
+const userStatistics = require('../controllers/user-statistics');
 const auth = require('../middlewares/authentication');
 
 router.get(
@@ -20,6 +21,7 @@ router.post(
   answerCtrl.calculateWeight,
   answerCtrl.formatAnswer,
   answerCtrl.saveAnswers,
+  userStatistics.updateScoreByQuestion,
   questionCtrl.saveJSON
 );
 

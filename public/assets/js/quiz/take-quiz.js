@@ -14,6 +14,7 @@
     this.$display = this.$el.find('#time');
     this.$submit = this.$el.find('.quiz-submit');
     this.$score = this.$el.find('.score');
+    this.$saveScore = this.$el.find('#saveHighscore');
   }
 
   TakeQuiz.prototype.initialize = initialize;
@@ -28,10 +29,15 @@
     //var time = self.time;
     var $submit = self.$submit;
     var $score = self.$score;
+    var $saveScore = self.$saveScore;
 
     if($score.length) {
       setTimeout(showModal, 5000);
     }
+
+    $saveScore.on('click', function(e) {
+      //TODO call save highscore route
+    })
 
     //TODO on page reload calculate the time again
     //TODO show 00:00 when the result are being displayed

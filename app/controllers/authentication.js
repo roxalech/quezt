@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const UserStatistics = mongoose.model('Statistics');
 const passport = require('passport');
 const _ = require('lodash');
 
@@ -56,10 +57,17 @@ function registerUser (req, res) {
       return res.redirect('/register');
     }
 
-    req.logIn(user, function(err) {
-      console.log(user);
-      req.session.historyData = undefined;
-      res.redirect('/');
+    // create User statistic obj
+    UserStatistics.createStatistic(user._id, function(err, response) {
+      if (err) {
+        console.log('ERROR in creating user statistic', err);
+      }
+
+      req.logIn(user, function(err) {
+        console.log('LOGGED USER: ', user);
+        req.session.historyData = undefined;
+        res.redirect('/');
+      });
     });
   });
 };

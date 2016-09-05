@@ -7,8 +7,11 @@
   data-date="{{time.date}}"
   class="take-quiz">
 
+	{% if not historyData.errorMessage and not historyData.correct %}
     <div>Time left to solve the quiz: <span id="time"></span></div>
-
+	{% else %}
+		<div>Your test results are: </div>
+	{% endif %}
   <div class="warning">{{historyData.errorMessage}}</div>
   <div class="container-fluid col-offset-md-4">
     {% for question in questions %}
@@ -23,32 +26,40 @@
             {% endif %}
           {% endif %}
         {% endfor %}
-      {% endif %}
 
-      {% for answer in question.answers %}
-        {% if question.answersType == 'single choice' %}
-          <input
-            class="answer"
-            type="radio"
-            name="{{question._id}}"
-            data-id="{{answer._id}}"
-            data-dif="{{question.difficultyLvl}}" />
-          <label for="{{answer._id}}">{{answer.body}}</label>
-        {% else %}
-          <input
-            class="answer"
-            type="checkbox"
-            name="{{question._id}}"
-            data-id="{{answer._id}}"
-            data-dif="{{question.difficultyLvl}}" />
-          <label for="{{answer._id}}">{{answer.body}}</label>
-        {% endif %}
-      {% endfor %}
+      {% else %}
+
+				{% for answer in question.answers %}
+					{% if question.answersType == 'single choice' %}
+						<input
+							class="answer"
+							type="radio"
+							name="{{question._id}}"
+							data-id="{{answer._id}}"
+							data-dif="{{question.difficultyLvl}}" />
+						<label for="{{answer._id}}">{{answer.body}}</label>
+					{% else %}
+						<input
+							class="answer"
+							type="checkbox"
+							name="{{question._id}}"
+							data-id="{{answer._id}}"
+							data-dif="{{question.difficultyLvl}}" />
+						<label for="{{answer._id}}">{{answer.body}}</label>
+					{% endif %}
+				{% endfor %}
+    	{% endif %}
     {% endfor %}
   </div>
-  <div><button class="quiz-submit">Submit</button></div>
   {% if historyData.score %}
-    <div><span class="score">Your score is: {{historyData.score}}</span></div>
-  {% endif %}
+    <div>
+			<span class="score">Your score is: {{historyData.score}}</span>
+			<button id="saveHighscore">Save highscore</button>
+			<a href="{{baseUrl/start-quiz}}">Try again</a>
+		</div>
+
+	{%else%}
+		<div><button class="quiz-submit">Submit</button></div>
+	{% endif %}
 </div>
 {% endblock %}
