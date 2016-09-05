@@ -6,9 +6,9 @@
   data-time="{{time.minutes}}"
   data-date="{{time.date}}"
   class="take-quiz">
-  {% if historyData.correct %}
+
     <div>Time left to solve the quiz: <span id="time"></span></div>
-  {% endif %}
+
   <div class="warning">{{historyData.errorMessage}}</div>
   <div class="container-fluid col-offset-md-4">
     {% for question in questions %}

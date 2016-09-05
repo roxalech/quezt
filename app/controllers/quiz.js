@@ -22,16 +22,20 @@ function startQuizPage (req, res) {
 }
 
 function getQuizData (req, res, next) {
+  console.log('CTRL GetQuizData ui data', req.body);
   var data = _.pick(req.body, 'category', 'difficulty', 'questions');
 
-  if(isNaN(data.questions)) {
+  if (!data.category || !data.difficulty || !data.questions) {
+    return res.status(401).json({ message: "Missing fields!" });
+  }
+
+  data.questions = +data.questions;
+
+  if (!data.questions) {
     return res.status(401).json({ message: "The number of questions should be a number" });
   }
-  //console.log(data.questions);
-  //console.log(typeof data.questions);
-  //console.log('isnan', isNaN(data.questions))
 
-  req.resources.nrOfQuestions = parseInt(data.questions);
+  req.resources.nrOfQuestions = data.questions;
   req.resources.questionTypes = {
     categories: data.category.split(","),
     difficulty: data.difficulty
@@ -54,11 +58,11 @@ function getQuizQuestions (req, res, next) {
   .find(query)
   .exec(function(err, results) {
     if (err) {
-      console.log(err);
+      console.log('CTRL GetQuizQuestions err: ', err);
       return next(err);
     }
 
-    //console.log('res', results);
+    console.log('CTRL GetQuizQuestions results: ', results);
     req.resources.quizQuestions = results;
     next();
   });
@@ -116,12 +120,13 @@ function generateQuiz (req, res, next) {
       finalQuestions.push(questions[random]);
     }
   }
-  console.log('!!!!!!!', finalQuestions);
+  console.log('QUIZ CTRL generate quiz final questions', finalQuestions);
   req.session.finalQuestions = finalQuestions;
   next();
   //return res.redirect(304, '/quiz');
 }
 
+//TODO add docs
 function calculateEndTime (req, res, next) {
   var time = new Date();
   var finalTime;
@@ -151,6 +156,7 @@ function calculateEndTime (req, res, next) {
   next();
 }
 
+//TODO add docs refactor
 function generateQuizEnd (req, res) {
   console.log('historyData', req.session.historyData);
   if (req.session.historyData.errorMessage) {

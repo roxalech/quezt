@@ -100,17 +100,18 @@ function saveAnswers (req, res, next) {
 
 function getQuestionAnswers (req, res, next) {
   var questionArr = req.resources.quizQuestions;
-  console.log(questionArr);
+  console.log('CTRL getQuestionAnswers array', questionArr);
+
   var ids = _.map(questionArr, '_id');
 
   Answer
   .find({question: { $in: ids }}, function (err, result) {
     if (err) {
-      console.log(err);
+      console.log('CTRL getQuestionAnswers err', err);
       return next(err);
     }
 
-    console.log('answers', result)
+    console.log('CTRL getQuestionAnswers answers: ', result)
     req.resources.answers = result;
     next();
   })

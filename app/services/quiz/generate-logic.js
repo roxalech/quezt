@@ -22,6 +22,7 @@ function formatQuestions (req, res, next) {
     //console.log('final', questionArr[i])
   }
 
+  console.log('Generate logic service FORMAT QUESTIONS ', questionArr);
   req.resources.quizQuestions = questionArr;
   next();
 }
@@ -33,20 +34,15 @@ function verifyParameters (req, res, next) {
   req.session.historyData = {};
 
   if (nrOfQuestions > questions.length) {
-    req.session.historyData.errorMessage = "There aren't enough questions matching your parameters";
-    //res.json(req.session.historyData.errorMessage);
-    nrOfQuestions = questions.length;
+    return res.status(401).json({message: "There aren't enough questions matching your parameters. There are only " + questions.length + ' available'});
   }
 
   if (nrOfQuestions > 20) {
-    req.session.historyData.errorMessage = "The number of questions  exceeds the maximum limit";
-    nrOfQuestions = 20;
-    //res.json(req.session.historyData.errorMessage);
+    return res.status(401).json({ message: "The number of questions  exceeds the maximum limit" });
 
   } else if (nrOfQuestions < 1) {
-    req.session.historyData.errorMessage = "The number of questions  is under the minimum limit";
-    nrOfQuestions = 1;
-    //res.json(req.session.historyData.errorMessage);
+
+    return res.status(401).json({ message: "The number of questions  is under the minimum limit" });
   }
 
   req.resources.nrOfQuestions = nrOfQuestions;

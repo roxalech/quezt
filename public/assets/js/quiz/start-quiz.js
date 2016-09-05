@@ -9,6 +9,7 @@
   function GenerateTest(opts){
     this.el = opts.el;
     this.$el = $(opts.el);
+    this.$warning = this.$el.parent().find('.warning');
   }
 
   GenerateTest.prototype.initialize = initialize;
@@ -19,6 +20,7 @@
   }
 
   function bindHandlers () {
+    var $warning = this.$warning;
     this.$el.submit(function(e) {
       e.preventDefault();
 
@@ -40,7 +42,9 @@
           window.location.href = '/quiz'
         })
         .fail(function(error) {
-            console.log(JSON.parse(error.responseText))
+          console.log(JSON.parse(error.responseText))
+          var msg = JSON.parse(error.responseText);
+          $warning.text(msg.message);
           //var message = JSON.parse(error.responseText);
           //util.generateNoty('error', message.message);
         });
