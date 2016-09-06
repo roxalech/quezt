@@ -60,4 +60,17 @@ var StatisticsSchema = new Schema({
   //]
 });
 
+StatisticsSchema.statics.createStatistic = function(userId, callback) {
+  var data = {
+    user: userId,
+    badges: []
+  };
+  this.model('Statistics').create(data, function(err, statistic) {
+    if (err) {
+     return callback(err, null);
+    }
+
+    callback(null, statistic);
+  });
+};
 module.exports = mongoose.model('Statistics', StatisticsSchema);

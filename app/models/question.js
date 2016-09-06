@@ -150,10 +150,10 @@ Question.createMapping({
 },function(err, mapping){
   if(err){
     console.log('error creating mapping (you can safely ignore this)');
-    console.log(err);
+    //console.log(err);
   }else{
     console.log('mapping created!');
-    console.log(mapping);
+    //console.log(mapping);
   }
 });
 

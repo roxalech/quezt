@@ -28,6 +28,7 @@ function nrOfCorrect (req, res, next) {
   next();
 }
 
+//calculates weight of each question answer
 function calculateWeight (req, res, next) {
   var difficulty = req.resources.question.difficultyLvl;
   var answerType = req.resources.question.answersType;
@@ -47,7 +48,7 @@ function calculateWeight (req, res, next) {
     weight = weight / nrOfCorrect;
   }
 
-  console.log('weight', weight);
+  //console.log('Answer weight', weight);
   req.resources.weight = weight;
   next();
 }
@@ -152,7 +153,7 @@ function getCorrectResults (req, res, next) {
       return next(err);
     }
 
-    console.log('answers', result)
+    console.log('--------CTRL answers', result)
     req.resources.correctAnswers = result;
     next();
   })

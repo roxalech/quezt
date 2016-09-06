@@ -14,6 +14,7 @@
     this.$display = this.$el.find('#time');
     this.$submit = this.$el.find('.quiz-submit');
     this.$score = this.$el.find('.score');
+    this.$saveScore = this.$el.find('#saveHighscore');
   }
 
   TakeQuiz.prototype.initialize = initialize;
@@ -28,10 +29,33 @@
     //var time = self.time;
     var $submit = self.$submit;
     var $score = self.$score;
+    var $saveScore = self.$saveScore;
+    var $submitModal = $('#submit-quiz-modal');
+    //
+    //$("html").on('mouseleave', function(e) {
+    //  console.log(window.location.pathname);
+    //  $submitModal.modal('show');
+    //
+    //  //alert('You are in quiz mode, you are not allowed to leave the page before submit');
+    //})
 
     if($score.length) {
       setTimeout(showModal, 5000);
     }
+
+    $saveScore.on('click', function(e) {
+      var url = baseUrl + '/save-score';
+
+      util
+      .post(url)
+      .done(function (result) {
+        console.log(result);
+        window.location.href = '/';
+      })
+      .fail(function (error) {
+        console.log(error);
+      })
+    })
 
     //TODO on page reload calculate the time again
     //TODO show 00:00 when the result are being displayed
@@ -76,6 +100,7 @@
         .post(url, data)
         .done(function (result) {
           console.log(result);
+
           window.location.reload();
         })
         .fail(function (error) {

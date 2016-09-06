@@ -7,6 +7,8 @@ const answerCtrl = require('../controllers/answer');
 const auth = require('../middlewares/authentication');
 const quizService = require('../services/quiz/generate-logic');
 const solveQuizService = require('../services/quiz/score-logic');
+const userStatistics = require('../controllers/user-statistics');
+
 router.get(
   '/start-quiz',
   auth.ensured,
@@ -48,6 +50,11 @@ router.post(
 router.get(
   '/quiz-answers',
   quizCtrl.renderCorrect
+);
+
+router.post(
+  '/save-score',
+  userStatistics.updateScoreByQuiz
 );
 
 
