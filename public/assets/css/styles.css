@@ -401,8 +401,35 @@ body {
   display: none;
 }
 .dashboard-header {
-  background-color: grey;
-  box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #9aa4aa;
+  box-shadow: 0 7px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.dashboard-header .home-logo {
+  height: 56px;
+  display: inline-block;
+  padding-top: 5px;
+}
+.dashboard-header .home-logo .icon {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+.dashboard-header .home-logo .icon .fa {
+  width: 100%;
+  height: 100%;
+  font-size: 53px;
+  color: #334452;
+}
+.dashboard-header .home-logo .name {
+  width: 80%;
+  height: 100%;
+  float: left;
+}
+.dashboard-header .home-logo .name p {
+  text-align: left;
+  font-size: 35px;
+  font-weight: 700;
+  color: #334452;
 }
 .header-links {
   float: right;
@@ -460,7 +487,7 @@ main .background-landing .landing-container .landing-header p {
   font-size: 16px;
 }
 main .background-landing .landing-container .landing-header .logo-name {
-  width: 40%;
+  width: 60%;
   height: 50px;
   margin: 15px auto;
 }
@@ -504,7 +531,7 @@ main .background-landing .landing-container .landing-header form .button-center 
 }
 main .background-landing .landing-container .landing-header .sign-up-section a {
   position: relative;
-  left: 43%;
+  left: 40%;
   bottom: 8px;
   text-decoration: none;
   color: #334452;
@@ -525,6 +552,7 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .inner-landing h1 {
   text-align: center;
+  color: #334452;
 }
 .inner-landing p {
   font-size: 16px;
@@ -546,10 +574,6 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   bottom: 2px;
   top: unset;
 }
-.dashboard-header .header-links li:first-of-type {
-  border: 0;
-  padding: 0;
-}
 .dashboard-inner {
   margin-top: 50px;
 }
@@ -558,7 +582,7 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   background-color: #334452;
   color: #f0edf0;
   position: relative;
-  left: 245px;
+  left: 156px;
 }
 .dashboard-inner #quiz-form label {
   padding-left: 13px !important;
@@ -735,12 +759,36 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .authentification-section .container-fluid .card {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
   width: 35%;
   margin: 0 auto;
 }
-.authentification-section .container-fluid .card .logo i {
-  padding: 5px 10px 0 0;
+.authentification-section .container-fluid .card .logo-name {
+  width: 53%;
+  height: 50px;
+  margin: 15px auto;
+}
+.authentification-section .container-fluid .card .logo-name .icon {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+.authentification-section .container-fluid .card .logo-name .icon .fa {
+  width: 100%;
+  height: 100%;
+  font-size: 53px;
+  color: #334452;
+}
+.authentification-section .container-fluid .card .logo-name .name {
+  width: 80%;
+  height: 100%;
+  float: left;
+}
+.authentification-section .container-fluid .card .logo-name .name p {
+  text-align: left;
+  font-size: 35px;
+  font-weight: 700;
+  color: #334452;
 }
 .authentification-section .container-fluid .card p {
   font-size: 15px;
@@ -766,14 +814,16 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .authentification-section .container-fluid .card h3 {
   margin-bottom: 25px;
+  color: #334452;
 }
 .authentification-section .container-fluid .card form input,
 .authentification-section .container-fluid .card form button {
   font-family: 'Roboto', sans-serif;
 }
-.authentification-section .container-fluid .card form button {
-  text-transform: uppercase;
-  font-weight: 700;
+.authentification-section .container-fluid .card form .btn-default {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
 }
 .authentification-section .container-fluid .card form label {
   padding-left: 13px !important;
@@ -786,10 +836,10 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .account-inner {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
-.account-inner .logo i {
-  padding: 5px 10px 0 0;
+.account-inner h1 {
+  color: #334452;
 }
 .account-inner p {
   font-size: 15px;
@@ -800,10 +850,10 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .add-questions-inner {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 30px;
 }
-.add-questions-inner .logo i {
-  padding: 5px 10px 0 0;
+.add-questions-inner h1 {
+  color: #334452;
 }
 .add-questions-inner p {
   font-size: 15px;
@@ -844,7 +894,8 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   float: left;
 }
 .all-form-group .answer-container .answer-item .options-container .correct-answer .correct-label {
-  padding-left: 43px !important;
+  padding-left: 6px !important;
+  text-align: center;
 }
 .all-form-group .answer-container .answer-item .options-container .correct-answer .correct {
   width: 33px;
@@ -855,7 +906,8 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   float: left;
 }
 .all-form-group .answer-container .answer-item .options-container .delete-answer .delete-label {
-  padding-left: 92px !important;
+  padding-left: 50px !important;
+  padding-bottom: 19px;
 }
 .all-form-group .answer-container .answer-item .options-container .delete-answer button {
   display: block;
@@ -875,4 +927,103 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .all-form-group .bottom-button {
   text-align: center;
+}
+.user-score {
+  padding-top: 30px;
+}
+.user-score h1 {
+  text-align: center;
+  color: #334452;
+}
+.quizzes-taken,
+.questions-added,
+.bold-text {
+  font-size: 15px;
+  font-weight: 700;
+}
+.quizzes-taken .bigger-text,
+.questions-added .bigger-text,
+.bold-text .bigger-text {
+  font-size: 22px;
+}
+.quizzes-taken,
+.questions-added {
+  text-align: center;
+}
+.border {
+  border-top: 1px solid #334452;
+  margin-bottom: 15px;
+}
+.border:last-of-type {
+  margin-bottom: 50px;
+}
+.high-sc {
+  padding-top: 30px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.high-sc h1 {
+  text-align: center;
+  color: #334452;
+}
+.high-sc .bigger-text {
+  font-size: 22px;
+}
+.high-sc article {
+  border-top: 1px solid #334452;
+  margin-bottom: 15px;
+}
+.quiz-gen {
+  padding-top: 30px;
+}
+.quiz-gen h1 {
+  text-align: center;
+  color: #334452;
+}
+.quiz-gen label {
+  padding-left: 13px !important;
+  color: #334452;
+}
+.quiz-gen .btn-default {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+  position: relative;
+  left: 150px;
+}
+.take-quiz {
+  margin-top: 60px;
+}
+.take-quiz .top-section {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.take-quiz .top-section .time-lapse {
+  font-size: 30px;
+  display: inline-block;
+  width: 80px;
+}
+.take-quiz .answer-container {
+  border-top: 1px solid #334452;
+}
+.take-quiz .answer-container:last-of-type {
+  border-bottom: 1px solid #334452;
+}
+.take-quiz .answer-container .content {
+  font-size: 18px;
+  margin: 8px 0;
+}
+.take-quiz .answer-container label {
+  font-size: 18px;
+  margin-right: 8px;
+}
+.take-quiz .btn-default {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+  position: relative;
+  left: 175px;
+  margin-top: 25px;
 }

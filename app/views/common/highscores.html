@@ -4,20 +4,17 @@
 {%include "./partials/header.html" %}
 {%include "./partials/navbar.html" %}
 <!-- main section  -->
-  <div class="container-fluid dashboard-inner">
-    <div class="col-md-4 col-md-offset-4">
-      <h3 class="titles">Highscores</h3>
+  <div class="container-fluid">
+    <div class="col-md-4 col-md-offset-4 high-sc">
+      <h1><i class="fa fa-list-ol" aria-hidden="true"></i> Highscores</h1>
       {%  for stat in statistics %}
       <article>
-				<div>{{stat.user.name}}</div>
-				<div>{{stat.score}}</div>
-				<div>
-					<span>Questions added: {{stat.questions}}</span>
-					<span>Quizzes taken: {{stat.quizzesTaken}}</span>
-				</div>
+				<div>Name: <span class="bigger-text">{{stat.user.name}}</span></div>
+				<div>Score: <span class="bigger-text">{{stat.score}}</span></div>
+				<div>Questions added: <span class="bigger-text">{{stat.questions}}</span></div>
+        <div>Quizzes taken: <span class="bigger-text">{{stat.quizzesTaken}}</span></div>
 			</article>
       {% endfor %}
     </div>
   </div>
-{%include "./partials/footer.html" %}
 {% endblock %}
