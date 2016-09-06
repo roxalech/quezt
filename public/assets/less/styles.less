@@ -62,40 +62,94 @@ body {
   border-top: 2px solid #337ab7;
   border-bottom: 2px solid #337ab7;
 }
-.landing-container {
-  width: 80%;
-  height: 60%;
-  margin: 0 auto;
-  padding-top: 15%;
-}
+main {
+  height: 100%;
+  .background-landing {
+    background-image: url("../img/desk.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    .landing-container {
+      height: 100%;
+      width: 100%;
+      .landing-header {
+        opacity: 0.97;
+        border-radius: 5px;
+        background-color: #f0edf0;
+        p {
+          text-align: center;
+          font-size: 16px;
+        }
+        .logo-name {
+          width: 40%;
+          height: 50px;
+          margin: 15px auto;
+          .icon {
+            width: 20%;
+            height: 100%;
+            float: left;
+            .fa {
+              width: 100%;
+              height: 100%;
+              font-size: 53px;
+              color: #334452;
+            }
+          }
+          .name {
+            width: 80%;
+            height: 100%;
+            float: left;
+            p {
+              text-align: left;
+              font-size: 35px;
+              font-weight: 700;
+              color: #334452;
+            }
+          }
+        }
+        form {
+          width: 60%;
+          margin: 0 auto;
+          .form-group {
+            color: #334452;
+          }
+          .button-center {
+            width: 60px;
+            margin: 0 auto 20px auto;
+            .btn-default {
+              background-image: none;
+              background-color: #334452;
+              color: #f0edf0;
 
-.landing-header p {
-  text-align: center;
-  font-size: 16px;
-}
-
-.landing-header .sign-up-section {
-  position: relative;
-  a {
-    text-decoration: none;
-    margin-left: 40px;
-    color: #334452;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 16px;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-    position: absolute;
-    right: 130px;
-    top: 75px;
-    &:hover {
-      color: #337ab7;
-      border-top: 2px solid #337ab7;
-      border-bottom: 2px solid #337ab7;
+            }
+          }
+        }
+      }
+      .landing-header .sign-up-section {
+        a {
+          position: relative;
+          left: 43%;
+          bottom: 8px;
+          text-decoration: none;
+          color: #334452;
+          text-transform: uppercase;
+          font-weight: 700;
+          font-size: 16px;
+          border-top: 2px solid transparent;
+          border-bottom: 2px solid transparent;
+          -webkit-transition: all 0.3s ease-in;
+          -moz-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+          &:hover {
+            color: #337ab7;
+            border-top: 2px solid #337ab7;
+            border-bottom: 2px solid #337ab7;
+          }
+        }
+      }
     }
   }
 }
@@ -360,8 +414,6 @@ body {
 .account-inner {
   text-align: center;
   padding-top: 50px;
-  width: 35%;
-  margin: 0 auto;
   .logo {
     i {
       padding: 5px 10px 0 0;
@@ -378,8 +430,6 @@ body {
 .add-questions-inner {
   text-align: center;
   padding-top: 50px;
-  width: 35%;
-  margin: 0 auto;
   .logo {
     i {
       padding: 5px 10px 0 0;
@@ -420,6 +470,7 @@ body {
   }
   label {
     padding-left: 13px !important;
+    color: #334452;
   }
   .form-group {
     text-align: left;

@@ -374,6 +374,11 @@ body {
 .siginin-content {
   width: 50%;
 }
+.vertical-center {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -430,22 +435,78 @@ body {
   border-top: 2px solid #337ab7;
   border-bottom: 2px solid #337ab7;
 }
-.landing-container {
-  width: 80%;
-  height: 60%;
-  margin: 0 auto;
-  padding-top: 15%;
+main {
+  height: 100%;
 }
-.landing-header p {
+main .background-landing {
+  background-image: url("../img/desk.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+main .background-landing .landing-container {
+  height: 100%;
+  width: 100%;
+}
+main .background-landing .landing-container .landing-header {
+  opacity: 0.97;
+  border-radius: 5px;
+  background-color: #f0edf0;
+}
+main .background-landing .landing-container .landing-header p {
   text-align: center;
   font-size: 16px;
 }
-.landing-header .sign-up-section {
-  position: relative;
+main .background-landing .landing-container .landing-header .logo-name {
+  width: 40%;
+  height: 50px;
+  margin: 15px auto;
 }
-.landing-header .sign-up-section a {
+main .background-landing .landing-container .landing-header .logo-name .icon {
+  width: 20%;
+  height: 100%;
+  float: left;
+}
+main .background-landing .landing-container .landing-header .logo-name .icon .fa {
+  width: 100%;
+  height: 100%;
+  font-size: 53px;
+  color: #334452;
+}
+main .background-landing .landing-container .landing-header .logo-name .name {
+  width: 80%;
+  height: 100%;
+  float: left;
+}
+main .background-landing .landing-container .landing-header .logo-name .name p {
+  text-align: left;
+  font-size: 35px;
+  font-weight: 700;
+  color: #334452;
+}
+main .background-landing .landing-container .landing-header form {
+  width: 60%;
+  margin: 0 auto;
+}
+main .background-landing .landing-container .landing-header form .form-group {
+  color: #334452;
+}
+main .background-landing .landing-container .landing-header form .button-center {
+  width: 60px;
+  margin: 0 auto 20px auto;
+}
+main .background-landing .landing-container .landing-header form .button-center .btn-default {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+}
+main .background-landing .landing-container .landing-header .sign-up-section a {
+  position: relative;
+  left: 43%;
+  bottom: 8px;
   text-decoration: none;
-  margin-left: 40px;
   color: #334452;
   text-transform: uppercase;
   font-weight: 700;
@@ -456,11 +517,8 @@ body {
   -moz-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  position: absolute;
-  right: 130px;
-  top: 75px;
 }
-.landing-header .sign-up-section a:hover {
+main .background-landing .landing-container .landing-header .sign-up-section a:hover {
   color: #337ab7;
   border-top: 2px solid #337ab7;
   border-bottom: 2px solid #337ab7;
@@ -717,8 +775,6 @@ body {
 .account-inner {
   text-align: center;
   padding-top: 50px;
-  width: 35%;
-  margin: 0 auto;
 }
 .account-inner .logo i {
   padding: 5px 10px 0 0;
@@ -733,8 +789,6 @@ body {
 .add-questions-inner {
   text-align: center;
   padding-top: 50px;
-  width: 35%;
-  margin: 0 auto;
 }
 .add-questions-inner .logo i {
   padding: 5px 10px 0 0;
@@ -770,6 +824,7 @@ body {
 }
 .all-form-group label {
   padding-left: 13px !important;
+  color: #334452;
 }
 .all-form-group .form-group {
   text-align: left;

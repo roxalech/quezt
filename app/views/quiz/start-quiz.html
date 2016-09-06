@@ -4,9 +4,9 @@
 {%include "../common/partials/header.html" %}
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
-<div class="row">
-  <div class="container-fluid dashboard-inner">
-    <div class="col-md-4">
+<div class="">
+  <div class="col-md-12 dashboard-inner">
+    <div class="col-md-4 col-md-offset-4">
       <h3 class="titles">Quiz generator</h3>
       <form
           data-module="generate.quiz"
@@ -41,6 +41,7 @@
       </form>
       <div class="warning">{{historyData.errorMessage}}</div>
     </div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 {%include "../common/partials/footer.html" %}

@@ -1,38 +1,49 @@
 {% extends "../layout.html" %}
 
 {% block content %}
-<div class="landing-container">
-  <div class="container-fluid landing-header siginin-content">
-    <!-- sign up form -->
-    <div class="clearfix"></div>
-    <p>Allready a member? Let's get started !</p>
-    <div class="clearfix"></div>
-    <form
-      action='{{ baseUrl }}/signin'
-      method='post'
-      role="form">
-    <div class="form-group">
-      <label for="username">Username:</label>
-        <input
-            type="text"
-            class="form-control"
-            name="username"
-            placeholder="Username *">
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-        <input type="password" class="form-control" name="password" placeholder="Password *">
-    </div>
-    <button type="submit" class="btn btn-default login">Login</button>
-    </form>
-    <div>{{historyData}}</div>
-    <div class="clearfix"></div>
-    <div class="sign-up-section">
-      <p>
-        Don't have an account?<br />
-        Let's create one!
-      </p>
-      <a href="{{baseUrl}}/register">Sign up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+<div class="background-landing">
+  <div class="landing-container">
+    <div class="col-md-4 col-md-offset-4 landing-header vertical-center">
+      <div class="logo-name">
+        <div class="icon">
+          <i class="fa fa-book" aria-hidden="true"></i>
+        </div>
+        <div class="name">
+          <p>
+            StudyBuddy
+          </p>
+        </div>
+      </div>
+      <!-- sign up form -->
+      <p>Allready a member? <br />Let's get started !</p>
+      <form
+        action='{{ baseUrl }}/signin'
+        method='post'
+        role="form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+          <input
+              type="text"
+              class="form-control"
+              name="username"
+              placeholder="Username *">
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+          <input type="password" class="form-control" name="password" placeholder="Password *">
+      </div>
+      <div class="button-center">
+        <button type="submit" class="btn btn-default login">Login</button>
+      </div>
+      </form>
+      <div>{{historyData}}</div>
+      <div class="sign-up-section">
+        <p>
+          Don't have an account?<br />
+          Let's create one!
+        </p>
+        <a href="{{baseUrl}}/register">Sign up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+      </div>
     </div>
   </div>
 </div>
