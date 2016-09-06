@@ -10,6 +10,8 @@ const auth = require('../middlewares/authentication');
 router.get(
   '/add-question',
   auth.ensured,
+  userStatistics.getScore,
+  userStatistics.allow,
   questionCtrl.addQuestionPage
 );
 

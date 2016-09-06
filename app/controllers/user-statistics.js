@@ -9,6 +9,7 @@ module.exports.updateScoreByQuiz = updateScoreByQuiz;
 module.exports.getScore = getScore;
 module.exports.getAll = getAll;
 module.exports.getUserStat = getUserStat;
+module.exports.allow = allow;
 
 function updateScoreByQuestion(req, res, next) {
   UserStatistics
@@ -94,4 +95,13 @@ function getAll(req, res, next) {
     req.resources.statistics = statistics;
     next()
   });
+}
+
+function allow(req, res, next) {
+  //console.log('user score', req.resources.score );
+  if(req.resources.score < 50) {
+    res.redirect('/');
+  } else {
+    next();
+  }
 }
