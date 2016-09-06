@@ -6,6 +6,7 @@ const ADD_QUESTION_SCORE = 20;
 
 module.exports.updateScoreByQuestion = updateScoreByQuestion;
 module.exports.updateScoreByQuiz = updateScoreByQuiz;
+module.exports.getScore = getScore;
 
 function updateScoreByQuestion(req, res, next) {
   UserStatistics
@@ -41,7 +42,6 @@ function updateScoreByQuiz(req, res, next) {
     statistics.quizzesTaken++;
 
     statistics.save(function(err, result) {
-      console.log('result', result);
       if(err) {
         return res.status(401).json({ message: 'Couldn\'t update score' });
       }
@@ -49,5 +49,17 @@ function updateScoreByQuiz(req, res, next) {
       delete req.session.historyData.score;
       res.json(result);
     });
+  });
+}
+
+function getScore(req, res, next) {
+  UserStatistics
+  .findOne({user: req.user._id}, function(err, statistics) {
+    if(err) {
+      console.log('GET SCORE - statistics ctrl err', err);
+    }
+
+    req.resources.quizzes = statistics.quizzesTaken;
+    next()
   });
 }

@@ -94,7 +94,7 @@ function registerPage(req, res) {
 
 function signout (req, res, next) {
   req.logout();
-  delete req.session;
+  delete req.session.historyData;
   res.redirect('/signin');
 };
 

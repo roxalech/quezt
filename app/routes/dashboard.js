@@ -6,10 +6,12 @@ const auth = require('../middlewares/authentication');
 const dashboardCtrl = require('../controllers/dashboard');
 const forumCtrl = require('../controllers/forum');
 const commentCtrl = require('../controllers/comment');
+const userStatistics = require('../controllers/user-statistics');
 
 router.get(
   '/',
   auth.ensured,
+  userStatistics.getScore,
   dashboardCtrl.dashboard
 );
 
