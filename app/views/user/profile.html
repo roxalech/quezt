@@ -5,33 +5,38 @@
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
 <div class="">
-  <div class="container-fluid dashboard-inner">
+  <div class="col-md-4 col-md-offset-4 user-score">
     <div>
-      User score
+      <h1><i class="fa fa-user" aria-hidden="true"></i> User score</h1>
 
       {% for key, badge in badges %}
       <span>{{badge.type}}</span>
       <span>{{badge.receivedAt}}</span>
       {% endfor %}
 
-			<div>
-				Quizzes taken
-				<span>{{quizzes}}</span>
+			<div class="quizzes-taken">
+				<span>Quizzes taken: </span>
+				<span class="bigger-text">{{quizzes}}</span>
 			</div>
-			<div>
-				Questions added
-				<span>{{nquestions}}</span>
+			<div class="questions-added">
+				<span>Questions added: </span>
+				<span class="bigger-text">{{nquestions}}</span>
 			</div>
 
       {% for question in questions %}
-			<article>
-				Content:
-				<div>{{question.content}}</div>
-				<span>Category: {{question.categories}}</span>
-				<span>Difficulty: {{question.difficultyLvl}}</span>
+			<article class="bold-text border">
+        <h3>Question details:</h3>
+				<span>Content:</span>
+				<span class="bigger-text">{{question.content}}</span>
+			<div class="">
+        <span>Category: </span>
+        <span class="bigger-text">{{question.categories}}</span>
+			</div>
+				<span>Difficulty: </span>
+        <span class="bigger-text">{{question.difficultyLvl}}</span>
 			</article>
       {% endfor %}
     </div>
   </div>
-</div>-
+</div>
 {% endblock %}

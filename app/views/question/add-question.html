@@ -4,8 +4,8 @@
 {%include "../common/partials/header.html" %}
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
-<div class="row">
-  <div class="container-fluid add-questions-inner">
+<div class="">
+  <div class="col-md-4 col-md-offset-4 add-questions-inner">
       <h1 class="titles"><i class="fa fa-question" aria-hidden="true"></i> Add a question</h1>
       <p>
         Add a question on whatever topic you'd like and we'll show you if it has been added before
@@ -27,7 +27,7 @@
 						placeholder="Question body *"
 						id="questionContent">
         </div>
-        <button id="content">Search for similar questions</button>
+        <button id="content" class="btn btn-default">Search for similar questions</button>
         <div class="question-matches">
           <p class=" hide no-matches"> No matching questions found</p>
 					<ul class="matches"></ul>
@@ -54,7 +54,7 @@
 						placeholder="Choose topic *"
 						id="categoryInput">
         </div>
-        <!--<div class="form-group">-->
+        <!-- <div class="form-group"> -->
           <!--<input-->
               <!--type="text"-->
               <!--class="form-control"-->
@@ -82,5 +82,5 @@
     </div>
   </div>
 </div>
-{%include "../common/partials/footer.html" %}
+
 {% endblock %}

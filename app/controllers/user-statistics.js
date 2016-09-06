@@ -12,13 +12,14 @@ module.exports.getUserStat = getUserStat;
 module.exports.allow = allow;
 
 function updateScoreByQuestion(req, res, next) {
+  console.log('!!!!',req.user._id);
   UserStatistics
   .findOne({user: req.user._id}, function(err, statistics) {
     if (err) {
       return res.status(401).json({ message: 'User not found.' });
     }
 
-    console.log('User statistic obj', statistics);
+    console.log('User statistic objdgyhvfb', statistics);
     statistics.score = statistics.score + ADD_QUESTION_SCORE;
     statistics.questions++;
     statistics.save(function(err, result) {
@@ -61,8 +62,6 @@ function getScore(req, res, next) {
     if(err) {
       console.log('GET SCORE - statistics ctrl err', err);
     }
-
-    //console.log('????',statistics);
     req.resources.score = statistics.score;
     next()
   });

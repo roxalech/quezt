@@ -139,15 +139,24 @@
             id=${$index}
             name=${$index}
             placeholder="Answer *">
+          <div class="options-container">
+          <div class="correct-answer">
+          <label class="correct-label">Check if this answer is correct</label>
           <input
             type=${inputType}
             class="correct form-control"
             name='correct'>
+          </div>
+          <div class="delete-answer">
+          <label class="delete-label">Delete this answer</label>
           <button
             id=${$index}
             class="delete btn btn-danger">
             x
           </button>
+          </div>
+          </div>
+          <div class="clearfix"></div>
         </div> `;
 
         index++;
@@ -250,7 +259,8 @@
       var answerVal = $input.val();
 
       if (answerVal) {
-        var $isCorrect = $input.next();
+        var $isCorrect = $input.parent().find(".correct");
+        console.log($isCorrect);
 
         if($isCorrect.prop('checked')) {
           isCorrect = true;

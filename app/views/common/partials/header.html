@@ -1,5 +1,16 @@
 <div class="container-fluid dashboard-header col-md-12">
   <!-- header part links -->
+  <div class="home-logo">
+    <a href="{{baseUrl}}">
+      <div class="icon">
+        <i class="fa fa-book" aria-hidden="true"></i>
+      </div>
+      <div class="name">
+        <p>
+          StudyBuddy
+        </p>
+      </div></a>
+  </div>
   <ul class="header-links">
     <li>
       <a href="{{baseUrl}}">Home <i class="fa fa-home" aria-hidden="true"></i></a>
@@ -11,15 +22,15 @@
       </a>
     </li>
     <li>
-      <a href="{{baseUrl}}/signout">
-        Sign out
-        <i class="fa fa-sign-out" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li>
       <a href="{{baseUrl}}/profile">
         {{currentUser.name}}
         <i class="fa fa-user" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href="{{baseUrl}}/signout">
+        Sign out
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
       </a>
     </li>
   </ul>

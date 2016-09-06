@@ -5,50 +5,56 @@
   data-module="take.quiz"
   data-time="{{time.minutes}}"
   data-date="{{time.date}}"
-  class="take-quiz">
+  class="take-quiz col-md-4 col-md-offset-4">
 
 	{% if not historyData.errorMessage and not historyData.correct %}
-    <div>Time left to solve the quiz: <span id="time"></span></div>
+    <div class="top-section">Time left to solve the quiz:
+      <div class="time-lapse">
+        <span id="time"></span>
+      </div>
+    </div>
 	{% else %}
-		<div>Your test results are: </div>
+		<div class="top-section">Your test results are: </div>
 	{% endif %}
   <div class="warning">{{historyData.errorMessage}}</div>
-  <div class="container-fluid col-offset-md-4">
+  <div class="">
     {% for question in questions %}
-      <div class="content">{{question.content}}</div>
+      <div class="answer-container">
+        <div class="content">{{question.content}}</div>
 
-      {% if historyData.correct %}
-        <span>The correct answer was:</span>
-        {% for answer in historyData.correct %}
-          {% if answer.question.toString() == question._id.toString() %}
-            {% if answer.correct == true %}
-              <span>{{answer.body}}</span>
+        {% if historyData.correct %}
+          <span>The correct answer was:</span>
+          {% for answer in historyData.correct %}
+            {% if answer.question.toString() == question._id.toString() %}
+              {% if answer.correct == true %}
+                <span>{{answer.body}}</span>
+              {% endif %}
             {% endif %}
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
 
-      {% else %}
+        {% else %}
 
-				{% for answer in question.answers %}
-					{% if question.answersType == 'single choice' %}
-						<input
-							class="answer"
-							type="radio"
-							name="{{question._id}}"
-							data-id="{{answer._id}}"
-							data-dif="{{question.difficultyLvl}}" />
-						<label for="{{answer._id}}">{{answer.body}}</label>
-					{% else %}
-						<input
-							class="answer"
-							type="checkbox"
-							name="{{question._id}}"
-							data-id="{{answer._id}}"
-							data-dif="{{question.difficultyLvl}}" />
-						<label for="{{answer._id}}">{{answer.body}}</label>
-					{% endif %}
-				{% endfor %}
-    	{% endif %}
+  				{% for answer in question.answers %}
+  					{% if question.answersType == 'single choice' %}
+  						<input
+  							class="answer"
+  							type="radio"
+  							name="{{question._id}}"
+  							data-id="{{answer._id}}"
+  							data-dif="{{question.difficultyLvl}}" />
+  						<label for="{{answer._id}}">{{answer.body}}</label>
+  					{% else %}
+  						<input
+  							class="answer"
+  							type="checkbox"
+  							name="{{question._id}}"
+  							data-id="{{answer._id}}"
+  							data-dif="{{question.difficultyLvl}}" />
+  						<label for="{{answer._id}}">{{answer.body}}</label>
+  					{% endif %}
+  				{% endfor %}
+      	{% endif %}
+      </div>
     {% endfor %}
   </div>
   {% if (historyData.score or historyData.correct) %}
@@ -59,7 +65,7 @@
 		</div>
 
 	{%else%}
-		<div><button class="quiz-submit">Submit</button></div>
+		<div><button class="btn btn-default quiz-submit">Submit</button></div>
 	{% endif %}
 </div>
 {% endblock %}
