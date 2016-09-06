@@ -104,4 +104,3 @@ function allow(req, res, next) {
     next();
   }
 }
->>>>>>> master
