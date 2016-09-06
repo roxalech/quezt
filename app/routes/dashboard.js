@@ -18,6 +18,7 @@ router.get(
 router.get(
   '/highscores',
   auth.ensured,
+  userStatistics.getAll,
   dashboardCtrl.highscores
 );
 

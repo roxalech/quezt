@@ -5,10 +5,12 @@ module.exports.highscores = highscoresPage;
 
 function dashboardPage (req, res) {
   res.render('common/dashboard', {
-    quizzes: req.resources.quizzes
+    score: req.resources.score
   });
 }
 
 function highscoresPage (req, res) {
-  res.render('common/highscores');
+  res.render('common/highscores', {
+    statistics: req.resources.statistics
+  });
 }

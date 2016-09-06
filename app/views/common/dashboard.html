@@ -7,12 +7,21 @@
     <div class="col-md-4">
       <h3 class="titles">Add a question</h3>
       <div class="round-action add-questions">
+				{% if score < 50 %}
+					<p>
+						You need to reach at least 50 score to unlock this.
+						Current score {{score}}
+					</p>
+					<i class="fa fa-lock" aria-hidden="true"></i>
+				{%else%}
         <a href="{{baseUrl}}/add-question">
           <p>
-            You need to achieve 3<sup>rd</sup> level to unlock this.
+            You have unlocked this feature.
+            Current score {{score}}
           </p>
-          <i class="fa fa-lock" aria-hidden="true"></i>
+          <i class="fa fa-unlock" aria-hidden="true"></i>
         </a>
+				{%endif%}
       </div>
     </div>
     <div class="col-md-4">
