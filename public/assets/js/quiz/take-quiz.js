@@ -30,7 +30,7 @@
     var $submit = self.$submit;
     var $score = self.$score;
     var $saveScore = self.$saveScore;
-    var $submitModal = $('#submit-quiz-modal');
+
     //
     //$("html").on('mouseleave', function(e) {
     //  console.log(window.location.pathname);
