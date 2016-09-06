@@ -14,16 +14,22 @@
       <span>{{badge.receivedAt}}</span>
       {% endfor %}
 
-      Quizzes taken
-      <span>{{quizzes.nrQuizzes}}</span>
-      <!--{% if currentUser._id.toString() == user.toString() %}-->
-      <!--//show summary results for quizzes-->
-      <!--{%endif%}-->
-      Questions added
+			<div>
+				Quizzes taken
+				<span>{{quizzes}}</span>
+			</div>
+			<div>
+				Questions added
+				<span>{{nquestions}}</span>
+			</div>
 
-      {% for key, question in questions %}
-      <span>{{question.body}}</span>
-      <span>{{question.score}}</span>
+      {% for question in questions %}
+			<article>
+				Content:
+				<div>{{question.content}}</div>
+				<span>Category: {{question.categories}}</span>
+				<span>Difficulty: {{question.difficultyLvl}}</span>
+			</article>
       {% endfor %}
     </div>
   </div>

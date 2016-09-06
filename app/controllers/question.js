@@ -11,6 +11,7 @@ module.exports.searchQuestion = searchQuestion;
 module.exports.saveJSON = saveJSON;
 module.exports.verifyMatches = verifyQuestionMatches;
 module.exports.suggestCategories = suggestCategories;
+module.exports.getUserQuestions = getUserQuestions;
 
 function addQuestionPage (req, res) {
   res.render('question/add-question', {
@@ -90,14 +91,14 @@ function verifyQuestionMatches (req, res, next) {
     if (err) {
       return res.status(401).json({ message: err });
     }
-    console.log('QUERY RESULTS', results.hits.hits);
+    //console.log('QUERY RESULTS', results.hits.hits);
     res.json(results);
   });
 }
 
 function suggestCategories (req, res, next) {
   var categoryCrumb = req.body.category;
-  console.log('ui cateogry', categoryCrumb);
+  //console.log('ui cateogry', categoryCrumb);
 
   Question
     .search({
@@ -112,7 +113,21 @@ function suggestCategories (req, res, next) {
       if (err) {
         return res.status(401).json({ message: err });
       }
-      console.log('QUERY RESULTS', results.hits.hits);
+      //console.log('QUERY RESULTS', results.hits.hits);
       res.json(results);
     });
+}
+
+
+function getUserQuestions(req, res, next) {
+  Question
+  .find({author: req.user._id}, function(err, result) {
+    if(err) {
+      console.log('GET getUserQuestions - question ctrl err', err);
+    }
+
+    //console.log('!!!!!',result);
+    req.resources.questions = result;
+    next()
+  });
 }

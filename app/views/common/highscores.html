@@ -7,7 +7,16 @@
   <div class="container-fluid dashboard-inner">
     <div class="col-md-4">
       <h3 class="titles">Highscores</h3>
-
+      {%  for stat in statistics %}
+      <article>
+				<div>{{stat.user.name}}</div>
+				<div>{{stat.score}}</div>
+				<div>
+					<span>Questions added: {{stat.questions}}</span>
+					<span>Quizzes taken: {{stat.quizzesTaken}}</span>
+				</div>
+			</article>
+      {% endfor %}
     </div>
   </div>
 {%include "./partials/footer.html" %}

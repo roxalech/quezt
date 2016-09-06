@@ -10,5 +10,7 @@ function dashboardPage (req, res) {
 }
 
 function highscoresPage (req, res) {
-  res.render('common/highscores');
+  res.render('common/highscores', {
+    statistics: req.resources.statistics
+  });
 }

@@ -7,6 +7,8 @@ const ADD_QUESTION_SCORE = 20;
 module.exports.updateScoreByQuestion = updateScoreByQuestion;
 module.exports.updateScoreByQuiz = updateScoreByQuiz;
 module.exports.getScore = getScore;
+module.exports.getAll = getAll;
+module.exports.getUserStat = getUserStat;
 
 function updateScoreByQuestion(req, res, next) {
   UserStatistics
@@ -30,14 +32,14 @@ function updateScoreByQuestion(req, res, next) {
 }
 
 function updateScoreByQuiz(req, res, next) {
-  console.log('SCORE!!!', req.session.historyData.score)
+  //console.log('SCORE!!!', req.session.historyData.score)
   UserStatistics
   .findOne({user: req.user._id}, function(err, statistics) {
     if (err) {
       return res.status(401).json({ message: 'User not found.' });
     }
 
-    console.log('User statistic obj', statistics);
+   // console.log('User statistic obj', statistics);
     statistics.score = statistics.score + req.session.historyData.score;
     statistics.quizzesTaken++;
 
@@ -59,8 +61,37 @@ function getScore(req, res, next) {
       console.log('GET SCORE - statistics ctrl err', err);
     }
 
-    console.log('????',statistics);
+    //console.log('????',statistics);
     req.resources.score = statistics.score;
+    next()
+  });
+}
+
+function getUserStat(req, res, next) {
+  UserStatistics
+  .findOne({user: req.user._id}, function(err, statistics) {
+    if(err) {
+      console.log('GET SCORE - statistics ctrl err', err);
+    }
+
+    //console.log('????',statistics);
+    req.resources.statistics = statistics;
+    next()
+  });
+}
+
+function getAll(req, res, next) {
+  UserStatistics
+  .find()
+  .sort({score: -1})
+  .populate('user')
+  .exec(function(err, statistics) {
+    if(err) {
+      console.log('GET SCORE - statistics ctrl err', err);
+    }
+
+    //console.log('statistics', statistics);
+    req.resources.statistics = statistics;
     next()
   });
 }

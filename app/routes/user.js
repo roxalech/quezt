@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router();
 const userCtrl = require('../controllers/user');
 const auth = require('../middlewares/authentication');
+const userStatistics = require('../controllers/user-statistics');
+const questionCtrl = require('../controllers/question');
 
 router.get('/account',
   auth.ensured,
@@ -18,6 +20,8 @@ router.put('/account',
 
 router.get('/profile',
   auth.ensured,
+  userStatistics.getUserStat,
+  questionCtrl.getUserQuestions,
   userCtrl.profilePage
 );
 

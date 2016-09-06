@@ -10,11 +10,13 @@ module.exports.accountPage = accountPage;
 
 
 function profilePage (req, res) {
+  console.log('profile', req.resources.statistics)
   res.render('user/profile', {
     user: req.user._id,
-    //badges: req.resources.badges,
-    //quizzes: req.resources.quizzes,
-    //questions: req.resources.questions
+    quizzes: req.resources.statistics.quizzesTaken,
+    nquestions: req.resources.statistics.questions,
+    score: req.resources.statistics.score,
+    questions: req.resources.questions
   });
 }
 
