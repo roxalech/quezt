@@ -553,6 +553,17 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 .dashboard-inner {
   margin-top: 50px;
 }
+.dashboard-inner #quiz-form button {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+  position: relative;
+  left: 245px;
+}
+.dashboard-inner #quiz-form label {
+  padding-left: 13px !important;
+  color: #334452;
+}
 .dashboard-inner .titles {
   text-align: center;
   text-transform: uppercase;
@@ -684,9 +695,6 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .forum a {
   padding: 17px 25px;
-  position: relative;
-  top: 25px;
-  left: 146px;
   background-color: #ee7326;
   border-radius: 15px;
   color: #313e5c;
@@ -698,6 +706,10 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   position: relative;
   top: 8px;
   right: 10px;
+}
+.forum .forum-inner {
+  width: 160.15px;
+  margin: 0 auto;
 }
 .sign-up-form {
   margin-top: 80px;
@@ -814,13 +826,8 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 .add-questions-inner form .messages-container .success {
   color: #39b93b;
 }
-.all-form-group input,
-.all-form-group button {
+.all-form-group input {
   font-family: 'Roboto', sans-serif;
-}
-.all-form-group button {
-  text-transform: uppercase;
-  font-weight: 700;
 }
 .all-form-group label {
   padding-left: 13px !important;
@@ -828,6 +835,43 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
 }
 .all-form-group .form-group {
   text-align: left;
+}
+.all-form-group .answer-container .answer-item .options-container {
+  margin-top: 15px;
+}
+.all-form-group .answer-container .answer-item .options-container .correct-answer {
+  width: 50%;
+  float: left;
+}
+.all-form-group .answer-container .answer-item .options-container .correct-answer .correct-label {
+  padding-left: 43px !important;
+}
+.all-form-group .answer-container .answer-item .options-container .correct-answer .correct {
+  width: 33px;
+  margin: 0 auto;
+}
+.all-form-group .answer-container .answer-item .options-container .delete-answer {
+  width: 50%;
+  float: left;
+}
+.all-form-group .answer-container .answer-item .options-container .delete-answer .delete-label {
+  padding-left: 92px !important;
+}
+.all-form-group .answer-container .answer-item .options-container .delete-answer button {
+  display: block;
+  margin: 0 auto;
+}
+.all-form-group .matches li {
+  list-style: upper-roman;
+  text-align: left;
+  text-transform: capitalize;
+  padding-left: 20px;
+}
+.all-form-group .btn-default,
+.all-form-group .btn-submit {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
 }
 .all-form-group .bottom-button {
   text-align: center;
