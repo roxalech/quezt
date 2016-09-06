@@ -10,6 +10,30 @@ module.exports.getTopics = getForumTopics;
 module.exports.getTopic = getForumTopic;
 module.exports.forum = forumPage;
 module.exports.topic = topicPage;
+module.exports.search = search;
+
+function search(req, res, next) {
+  var term = req.body.term;
+
+  Forum
+    .search({
+      query: {
+        match: {
+          _all: {
+            query: term
+          }
+        }
+      }
+    },{
+      hydrate:true
+    }, function(err,results) {
+      if (err) {
+        return res.status(401).json({ message: err });
+      }
+      console.log('QUERY RESULTS', results.hits.hits);
+      res.json(results);
+    });
+}
 
 function findTopicByHash(req, res, next) {
   Forum

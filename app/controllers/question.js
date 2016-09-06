@@ -91,7 +91,7 @@ function verifyQuestionMatches (req, res, next) {
     if (err) {
       return res.status(401).json({ message: err });
     }
-    //console.log('QUERY RESULTS', results.hits.hits);
+    console.log('QUERY RESULTS', results.hits.hits);
     res.json(results);
   });
 }

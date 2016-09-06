@@ -23,6 +23,9 @@ $(function() {
     }),
     'take.quiz' : new APP.TakeQuiz({
       el: '.take-quiz'
+    }),
+    'search' : new APP.Search({
+      el: '.search-topics'
     })
   };
 
