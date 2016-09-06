@@ -50,7 +50,8 @@ function calculateScore (req, res, next) {
     }
   }
 
-  console.log(score)
+  console.log('QUIZ score', score)
+  req.resources.score = Math.round(score);
   req.session.historyData.score = Math.round(score);
   next();
 }

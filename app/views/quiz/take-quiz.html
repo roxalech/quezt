@@ -51,11 +51,11 @@
     	{% endif %}
     {% endfor %}
   </div>
-  {% if historyData.score %}
+  {% if (historyData.score or historyData.correct) %}
     <div>
 			<span class="score">Your score is: {{historyData.score}}</span>
 			<button id="saveHighscore">Save highscore</button>
-			<a href="{{baseUrl/start-quiz}}">Try again</a>
+			<a href="{{baseUrl}}/start-quiz">Try again</a>
 		</div>
 
 	{%else%}

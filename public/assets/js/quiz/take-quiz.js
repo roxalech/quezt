@@ -30,13 +30,31 @@
     var $submit = self.$submit;
     var $score = self.$score;
     var $saveScore = self.$saveScore;
+    var $submitModal = $('#submit-quiz-modal');
+    //
+    //$("html").on('mouseleave', function(e) {
+    //  console.log(window.location.pathname);
+    //  $submitModal.modal('show');
+    //
+    //  //alert('You are in quiz mode, you are not allowed to leave the page before submit');
+    //})
 
     if($score.length) {
       setTimeout(showModal, 5000);
     }
 
     $saveScore.on('click', function(e) {
-      //TODO call save highscore route
+      var url = baseUrl + '/save-score';
+
+      util
+      .post(url)
+      .done(function (result) {
+        console.log(result);
+        window.location.href = '/';
+      })
+      .fail(function (error) {
+        console.log(error);
+      })
     })
 
     //TODO on page reload calculate the time again
@@ -82,6 +100,7 @@
         .post(url, data)
         .done(function (result) {
           console.log(result);
+
           window.location.reload();
         })
         .fail(function (error) {
