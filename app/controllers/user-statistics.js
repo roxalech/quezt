@@ -59,7 +59,8 @@ function getScore(req, res, next) {
       console.log('GET SCORE - statistics ctrl err', err);
     }
 
-    req.resources.quizzes = statistics.quizzesTaken;
+    console.log('????',statistics);
+    req.resources.score = statistics.score;
     next()
   });
 }
