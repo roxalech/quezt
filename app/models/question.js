@@ -41,6 +41,10 @@ var QuestionSchema = new Schema({
   categories: {
     type:String
   },
+  categories_suggest: {
+    type:String,
+    es_type:'completion'
+  },
   difficultyLvl : {
     type:String
   }
@@ -122,17 +126,18 @@ Question.createMapping({
     }
   },
   "mappings": {
-    "user-questions": {
+    "question": {
       "properties": {
         "content": {
           "type": "string",
           "analyzer": "body_analyzer",
           "search_analyzer": "whitespace_analyzer"
         },
-        "categories": {
-          "type": "string",
-          "analyzer": "edge_ngram_analyzer",
-          "search_analyzer": "whitespace_analyzer"
+        "categories_suggest": {
+          "type": "completion",
+          "index_analyzer": "simple",
+          "search_analyzer": "simple",
+          "payloads": false
         },
         "difficultyLvl": {
           "type": "string",

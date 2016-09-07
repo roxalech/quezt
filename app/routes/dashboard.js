@@ -48,7 +48,8 @@ router.get(
 router.post(
   '/search-forum',
   auth.ensured,
-  forumCtrl.search
+  forumCtrl.search,
+  forumCtrl.forum
 );
 
 module.exports = router;

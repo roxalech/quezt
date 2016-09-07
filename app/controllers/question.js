@@ -31,11 +31,13 @@ function addQuestion (req, res, next) {
   req.session.historyData = {};
   var data = _.pick(req.body, 'questionBody', 'answerType', 'difficulty', 'category');
 
+  var categ = data.category.split(' ');
   var questionData = new Question({
     content: data.questionBody,
     answersType: data.answerType,
     difficultyLvl: data.difficulty,
     categories: data.category,
+    categories_suggest: data.category,
     author:  req.user._id
   });
 
@@ -102,15 +104,20 @@ function suggestCategories (req, res, next) {
 
   Question
     .search({
-      query: {
-        match: {
-          categories: categoryCrumb
+      "query": {
+        "match_all": {}
+      },
+      "suggest": {
+        "questions": {
+          "text": categoryCrumb,
+          "completion": {
+            "field": "categories_suggest"
+          }
         }
       }
-    },{
-      hydrate:true
-    }, function(err,results) {
+    },function(err,results) {
       if (err) {
+        console.log(err);
         return res.status(401).json({ message: err });
       }
       //console.log('QUERY RESULTS', results.hits.hits);

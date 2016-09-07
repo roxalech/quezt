@@ -28,13 +28,29 @@
       var url = baseUrl + '/search-forum';
       var topicData = {};
       var $topicInput = $('input[name="search-term"]');
-
+      var $topics = $searchForm.parent().find('.topics');
+      console.log($topics);
       topicData['term'] = $topicInput.val();
 
       util
         .post(url, topicData)
         .done(function(result) {
           console.log(result);
+          var arr = result.hits.hits;
+          if (arr.length) {
+            var template = ``;
+            template += `<div>Searched results</div>`;
+            for(var i=0; i<arr.length; i++) {
+              var url = baseUrl + '/topics/' + arr[i].hash;
+              template += `<div>
+              <a href=${url}>
+                  ${arr[i].topic}
+            </a>
+              </div>`
+            }
+
+            $(template).appendTo($topics);
+          }
           //window.location.reload();
         })
         .fail(function(error) {

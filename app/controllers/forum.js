@@ -13,6 +13,7 @@ module.exports.topic = topicPage;
 module.exports.search = search;
 
 function search(req, res, next) {
+  req.session.historyData = {};
   var term = req.body.term;
 
   Forum
@@ -30,7 +31,9 @@ function search(req, res, next) {
       if (err) {
         return res.status(401).json({ message: err });
       }
-      console.log('QUERY RESULTS', results.hits.hits);
+      console.log('QUERY RESULTS', results);
+      req.session.historyData = results.hits.hits;
+      //return next();
       res.json(results);
     });
 }
