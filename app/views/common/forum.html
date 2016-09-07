@@ -4,7 +4,8 @@
 {%include "./partials/header.html" %}
 {%include "../common/partials/navbar.html" %}
 <!-- main section  -->
-<div class="">
+<div class="col-md-4 col-md-offset-4 forum-content">
+  <h1><i class="fa fa-comment" aria-hidden="true"></i> Forum</h1>
   <div
 		data-module="search"
 		class="search-topics">
@@ -28,17 +29,15 @@
 			</div>
 		</form>
 	</div>
-  <div class="container-fluid dashboard-inner">
-    <div class="col-md-4">
-      <h3 class="titles">Forum</h3>
-    </div>
-    <div class="col-md-12"></div>
+  <div class="">
+    <div class=""></div>
     <div
       data-module="add.topic"
-      class="add-forum-topic col-md-offset-1 col-md-4">
+      class="add-forum-topic">
       <h3 class="titles">Start a topic</h3>
       <form id="topic-form">
         <div class="form-group">
+          <label for="add-forum-topic">Add a question</label>
           <input
             type="text"
             class="form-control"
@@ -46,6 +45,7 @@
             placeholder="Add a question *">
         </div>
         <div class="form-group">
+          <label for="add-category">Add a category</label>
           <input
             type="text"
             class="form-control"
@@ -54,12 +54,13 @@
         </div>
         <button
           type="submit"
-          class="btn btn-default">
+          class="btn btn-default bottom-button">
           Submit
         </button>
       </form>
     </div>
-    <div class="col-md-10 col-md-offset-2">
+    <h3>Disscusions</h3>
+    <div class="">
       {% include "./partials/forum-topics.html" %}
     </div>
   </div>
