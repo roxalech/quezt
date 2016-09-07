@@ -1027,3 +1027,104 @@ main .background-landing .landing-container .landing-header .sign-up-section a:h
   left: 175px;
   margin-top: 25px;
 }
+.forum-content {
+  color: #334452;
+  padding-top: 30px;
+}
+.forum-content h1 {
+  text-align: center;
+  color: #334452;
+}
+.forum-content .search-topics {
+  width: 60%;
+  margin: 0 auto;
+}
+.forum-content label {
+  padding-left: 13px;
+}
+.forum-content .bottom-button {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+  position: relative;
+  left: 175px;
+}
+.forum-content article {
+  border-top: 1px solid #334452;
+}
+.forum-content article:last-of-type {
+  border-bottom: 1px solid #334452;
+  margin-bottom: 30px;
+}
+.forum-content article a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #334452;
+  font-weight: 700;
+}
+.forum-content article a:hover {
+  color: #334452;
+}
+.forum-content article .comments {
+  font-size: 15px;
+}
+.forum-topics {
+  color: #334452;
+}
+.forum-topics h1 {
+  text-align: center;
+}
+.forum-topics .title-of-desc {
+  font-size: 18px;
+  font-weight: 700;
+}
+.forum-topics .subj-of-desc {
+  font-size: 18px;
+  font-weight: 700;
+}
+.forum-topics .responses {
+  border-top: 1px solid #334452;
+}
+.forum-topics .responses:last-of-type {
+  border-bottom: 1px solid #334452;
+  margin-bottom: 30px;
+}
+.forum-topics .responses .auth-name,
+.forum-topics .responses .comment {
+  font-size: 18px;
+  font-weight: 700;
+}
+.forum-topics .responses .comment {
+  margin-top: 10px;
+  padding-left: 13px;
+}
+.forum-topics .comment-section label {
+  padding-left: 13px;
+}
+.forum-topics .comment-section .btn-default {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+  position: relative;
+  left: 175px;
+}
+.forum-topics .go-back {
+  margin: 25px 0;
+}
+.forum-topics .go-back a {
+  text-decoration: none;
+  color: #334452;
+  font-size: 18px;
+  font-weight: 700;
+}
+.forum-topics .go-back a:hover {
+  color: #334452;
+}
+.modal-open .modal .modal-dialog .modal-btns .del-modal-btns button {
+  background-image: none;
+  background-color: #334452;
+  color: #f0edf0;
+}
+.modal-open .modal .modal-dialog .modal-content {
+  padding: 20px;
+}
