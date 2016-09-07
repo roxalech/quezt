@@ -41,12 +41,15 @@
             var template = ``;
             template += `<div>Searched results</div>`;
             for(var i=0; i<arr.length; i++) {
-              var url = baseUrl + '/topics/' + arr[i].hash;
-              template += `<div>
-              <a href=${url}>
-                  ${arr[i].topic}
-            </a>
-              </div>`
+              if(arr[i]) {
+                var url = baseUrl + '/topics/' + arr[i].hash;
+                    template += `<div>
+                    <a href=${url}>
+                    ${arr[i].topic}
+                  </a>
+                </div>`;
+              }
+
             }
 
             $(template).appendTo($topics);

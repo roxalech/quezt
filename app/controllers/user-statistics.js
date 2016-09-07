@@ -20,7 +20,7 @@ function updateScoreByQuestion(req, res, next) {
     }
 
     console.log('User statistic objdgyhvfb', statistics);
-    statistics.score = statistics.score + ADD_QUESTION_SCORE;
+    statistics.score = +statistics.score + ADD_QUESTION_SCORE;
     statistics.questions++;
     statistics.save(function(err, result) {
       console.log('result', result);
@@ -42,9 +42,9 @@ function updateScoreByQuiz(req, res, next) {
     }
 
    // console.log('User statistic obj', statistics);
-    statistics.score = statistics.score + req.session.historyData.score;
+    statistics.score = +statistics.score + +req.session.historyData.score;
     statistics.quizzesTaken++;
-
+console.log('AFTER', statistics.score);
     statistics.save(function(err, result) {
       if(err) {
         return res.status(401).json({ message: 'Couldn\'t update score' });

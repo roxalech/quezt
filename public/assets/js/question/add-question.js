@@ -13,7 +13,7 @@
     this.$addAnswer = this.$el.find('.add-answer');
     this.$answerContainer = this.$el.find('.answer-container');
     this.$success = this.$addQuestionForm.find('.success');
-    this.$questionContent = this.$addQuestionForm.find('#content');
+    this.$questionContent = this.$el.find('#content');
     this.$categoryInput = this.$addQuestionForm.find('#categoryInput');
   }
 
@@ -92,16 +92,16 @@
       var url = baseUrl + '/suggest-categories';
       var data = { category: value };
       console.log(value);
-      util
-        .post(url, data)
-        .done(function (result) {
-          console.log(result);
-
-
-        })
-        .fail(function (err) {
-          console.log(err);
-        })
+      //util
+      //  .post(url, data)
+      //  .done(function (result) {
+      //    console.log(result);
+      //
+      //
+      //  })
+      //  .fail(function (err) {
+      //    console.log(err);
+      //  })
     })
 
     $type.on('keyup', function () {
@@ -215,24 +215,24 @@
           } else {
 
             // TODO figure out how to calculate similarity
-            if (foundMatches) {
-              $warning.removeClass('hide');
-              $warning.text('It seems that similar questions have already been added');
-            } else {
+            //if (foundMatches) {
+            //  $warning.removeClass('hide');
+            //  $warning.text('It seems that similar questions have already been added');
+            //} else {
 
               util
               .post(url, questionData)
               .done(function (result) {
                 console.log(result);
                 //add noty
-                //window.location.reload();
+                window.location.reload();
               })
               .fail(function (error) {
                 console.log(error);
                 //var message = JSON.parse(error.responseText);
                 //util.generateNoty('error', message.message);
               });
-            }
+            //}
           }
         }
       }
